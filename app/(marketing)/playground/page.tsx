@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function PlaygroundPage() {
   return (
-    <section className="playground-dashboard">
+    <section className="pg-root">
       <Playground />
     </section>
   );
