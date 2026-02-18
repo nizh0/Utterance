@@ -94,10 +94,15 @@ export default function HomePage() {
             Know when they finish talking.
           </h1>
           <p className="landing-hero-sub">
-            Client-side semantic endpointing for voice apps. Detect turn
-            completion, thinking pauses, and interrupts entirely in the browser.
+            A lightweight ML library detects turn completion, thinking pauses,
+            and interrupts. It works entirely in the browser. There are no
+            servers, no API keys, and no latency.
           </p>
-          <div className="landing-hero-btns" role="group" aria-label="Get started actions">
+          <div
+            className="landing-hero-btns"
+            role="group"
+            aria-label="Get started actions"
+          >
             <Button asChild size="lg">
               <Link href="/docs/quick-start">Get started</Link>
             </Button>
@@ -105,7 +110,11 @@ export default function HomePage() {
               <Link href="/playground">Playground</Link>
             </Button>
           </div>
-          <div className="landing-hero-install" role="group" aria-label="Install command">
+          <div
+            className="landing-hero-install"
+            role="group"
+            aria-label="Install command"
+          >
             <code className="landing-install-text">
               npm install @utterance/core
             </code>
@@ -115,13 +124,22 @@ export default function HomePage() {
       </section>
 
       {/* Benefits */}
-      <section id="benefits" className="landing-section" aria-labelledby="benefits-heading">
+      <section
+        id="benefits"
+        className="landing-section"
+        aria-labelledby="benefits-heading"
+      >
         <div className="landing-section-header">
-          <Badge variant="outline" className="w-fit rounded-md border-border px-2.5 py-1 text-muted-foreground font-normal text-sm">
+          <Badge
+            variant="outline"
+            className="w-fit rounded-md border-border px-2.5 py-1 text-muted-foreground font-normal text-sm"
+          >
             <span className="text-muted-foreground">//</span>
             Benefits
           </Badge>
-          <h2 id="benefits-heading" className="landing-h2">Why Utterance?</h2>
+          <h2 id="benefits-heading" className="landing-h2">
+            Why Utterance?
+          </h2>
         </div>
         <div className="landing-grid-3" role="list" aria-label="Key benefits">
           {benefits.map((b) => (
@@ -135,7 +153,9 @@ export default function HomePage() {
                   <b.icon size={24} strokeWidth={1.5} color="white" />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-base font-medium text-white">{b.title}</h3>
+                  <h3 className="text-base font-medium text-white">
+                    {b.title}
+                  </h3>
                   <p className="text-base leading-[1.3] text-muted-foreground">
                     {b.description}
                   </p>
@@ -147,9 +167,16 @@ export default function HomePage() {
       </section>
 
       {/* Quick Start */}
-      <section id="quick-start" className="landing-section" aria-labelledby="quickstart-heading">
+      <section
+        id="quick-start"
+        className="landing-section"
+        aria-labelledby="quickstart-heading"
+      >
         <div className="landing-section-header">
-          <Badge variant="outline" className="w-fit rounded-md border-border px-2.5 py-1 text-muted-foreground font-normal text-sm">
+          <Badge
+            variant="outline"
+            className="w-fit rounded-md border-border px-2.5 py-1 text-muted-foreground font-normal text-sm"
+          >
             <span className="text-muted-foreground">//</span>
             Quick start
           </Badge>
@@ -158,7 +185,11 @@ export default function HomePage() {
           </h2>
         </div>
         <div className="landing-quickstart">
-          <div className="landing-install-row" role="group" aria-label="Install command">
+          <div
+            className="landing-install-row"
+            role="group"
+            aria-label="Install command"
+          >
             <code className="landing-install-text">
               npm install @utterance/core
             </code>
@@ -171,7 +202,10 @@ export default function HomePage() {
               <div className="landing-code-dot landing-code-dot--green" />
               <span className="landing-code-filename">index.ts</span>
             </div>
-            <pre className="landing-code-pre" aria-label="Utterance usage example code">
+            <pre
+              className="landing-code-pre"
+              aria-label="Utterance usage example code"
+            >
               <SyntaxHighlight code={codeSnippet} />
             </pre>
           </figure>
@@ -179,15 +213,25 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="landing-section" style={{ paddingBottom: 48 }} aria-labelledby="cta-heading">
+      <section
+        className="landing-section"
+        style={{ paddingBottom: 48 }}
+        aria-labelledby="cta-heading"
+      >
         <Card className="w-full min-h-[280px] md:min-h-[360px] border-none shadow-none">
           <CardContent className="flex-1 flex flex-col justify-center items-start gap-3 p-6 sm:p-10">
-            <h2 id="cta-heading" className="landing-h2">Open source. Community driven.</h2>
+            <h2 id="cta-heading" className="landing-h2">
+              Open source. Community driven.
+            </h2>
             <p className="text-base leading-[1.3] text-muted-foreground max-w-[360px]">
               MIT licensed. Free forever. Star us on GitHub, join the Discord,
               or open a PR.
             </p>
-            <div className="flex gap-3 mt-3" role="group" aria-label="Community links">
+            <div
+              className="flex gap-3 mt-3"
+              role="group"
+              aria-label="Community links"
+            >
               <Button asChild size="lg">
                 <a
                   href="https://github.com/nizh0/Utterance"
