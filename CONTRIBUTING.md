@@ -42,26 +42,29 @@ npm run build        # build ESM + CJS + types into dist/
 
 Ensure everything passes before submitting.
 
-### 5. Test in the Browser
+### 5. Run the Dev Environment
 
-To test your changes in a real browser with microphone access:
-
-```bash
-npm run build
-npx serve .
-```
-
-Then open **http://localhost:3000/examples/basic/** in your browser. The demo provides a live event log so you can see `speechStart`, `pause`, `turnEnd`, and `interrupt` events as they fire.
-
-For active development, run these in separate terminal tabs:
+One command runs everything you need:
 
 ```bash
-npm run dev          # rebuilds on every file save
-npm run test:watch   # re-runs tests on every file save
-npx serve .          # serves the project locally
+npm start
 ```
 
-This gives you a full dev loop: edit code, see tests re-run automatically, and refresh the browser to test.
+This will:
+- Build the project
+- Watch for file changes and rebuild automatically
+- Start a local server at **http://localhost:3000**
+- Run tests in watch mode
+
+Open **http://localhost:3000/examples/basic/** to see the browser demo with a live event log.
+
+You can also run each piece individually if you prefer:
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Rebuild on every file save |
+| `npm run serve` | Local server at port 3000 |
+| `npm run test:watch` | Re-run tests on every file save |
 
 ### 6. Submit a Pull Request
 

@@ -223,7 +223,7 @@ Check out issues labeled [`good-first-issue`](https://github.com/nizh0/Utterance
 git clone https://github.com/nizh0/Utterance.git
 cd Utterance
 npm install
-npm run dev
+npm start
 ```
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines and [CHANGELOG.md](CHANGELOG.md) for what's been shipped.

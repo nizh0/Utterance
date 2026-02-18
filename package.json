@@ -18,7 +18,9 @@
     "models"
   ],
   "scripts": {
+    "start": "npm run build && run-p dev serve test:watch",
     "dev": "tsup src/index.ts --watch --format esm,cjs --dts",
+    "serve": "serve . -l 3000",
     "build": "tsup src/index.ts --format esm,cjs --dts --clean",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -54,7 +56,9 @@
     "@eslint/js": "^9.0.0",
     "@types/node": "^22.0.0",
     "eslint": "^9.0.0",
+    "npm-run-all2": "^8.0.4",
     "prettier": "^3.4.0",
+    "serve": "^14.2.5",
     "tsup": "^8.0.0",
     "typescript": "^5.7.0",
     "typescript-eslint": "^8.0.0",
