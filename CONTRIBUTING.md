@@ -73,6 +73,7 @@ Look for issues labeled [`good-first-issue`](https://github.com/nizh0/Utterance/
 - Designing the event system and API
 - Testing browser compatibility
 - Creating the React hooks package (`@utterance/react`)
+- Building React Native support (`@utterance/react-native`)
 
 **Documentation**
 
@@ -197,8 +198,7 @@ All contributors are acknowledged in our releases. Significant contributions ear
 
 ## Questions?
 
-- [Discord](https://discord.gg/utterance) is the fastest way to get help
+- [Discord](https://discord.gg/kb4zMHNtEV) is the fastest way to get help
 - [GitHub Issues](https://github.com/nizh0/Utterance/issues) is for reporting bugs and requesting features
-- Email us at hello@utterance.dev
 
 Thank you for helping make voice interfaces truly understand humans.
