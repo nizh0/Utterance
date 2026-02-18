@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Mic, Square, Settings, X, Trash2, ArrowLeft } from "lucide-react";
+import { Mic, Square, Settings, X, Trash2, ArrowLeft, Cpu } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
@@ -13,6 +13,20 @@ interface LogEntry {
   detail: string;
   timestamp: string;
 }
+
+type ModelSource = "cdn" | "bundled" | "none";
+
+const modelSourceLabels: Record<ModelSource, string> = {
+  cdn: "ONNX (CDN)",
+  bundled: "ONNX (Bundled)",
+  none: "EnergyVAD (no model)",
+};
+
+const modelSourceDescriptions: Record<ModelSource, string> = {
+  cdn: "170 KB int8 model from CDN",
+  bundled: "170 KB int8 model from npm",
+  none: "Simple energy-based detection",
+};
 
 const eventColors: Record<string, string> = {
   speechStart: "#28c840",
@@ -34,6 +48,8 @@ export function Playground() {
   const [entries, setEntries] = useState<LogEntry[]>([]);
   const [sensitivity, setSensitivity] = useState(0.5);
   const [pauseTolerance, setPauseTolerance] = useState(1500);
+  const [modelSource, setModelSource] = useState<ModelSource>("cdn");
+  const [activeModel, setActiveModel] = useState<ModelSource | null>(null);
   const [counts, setCounts] = useState<Record<string, number>>({
     speechStart: 0,
     pause: 0,
@@ -41,6 +57,7 @@ export function Playground() {
     interrupt: 0,
   });
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const detectorRef = useRef<import("@utterance/core").Utterance | null>(null);
   const idRef = useRef(0);
@@ -78,47 +95,71 @@ export function Playground() {
   }, []);
 
   const handleStart = useCallback(async () => {
-    const { Utterance } = await import("@utterance/core");
-
-    const detector = new Utterance({
-      sensitivity,
-      pauseTolerance,
-    });
-
-    detector.on("speechStart", () => {
-      addEntry("speechStart", "Speech detected");
-    });
-
-    detector.on("pause", (e) => {
-      addEntry(
-        "pause",
-        `Duration: ${e.duration}ms \u00b7 Confidence: ${e.confidence.toFixed(2)}`
-      );
-    });
-
-    detector.on("turnEnd", (e) => {
-      addEntry(
-        "turnEnd",
-        `Confidence: ${e.confidence.toFixed(2)} \u00b7 Duration: ${e.duration}ms`
-      );
-    });
-
-    detector.on("interrupt", () => {
-      addEntry("interrupt", "User interrupted");
-    });
-
+    setLoading(true);
     setEntries([]);
     setCounts({ speechStart: 0, pause: 0, turnEnd: 0, interrupt: 0 });
-    await detector.start();
-    detectorRef.current = detector;
-    setListening(true);
-    addEntry("system", "Microphone active \u2014 start speaking...");
-  }, [addEntry, sensitivity, pauseTolerance]);
+
+    const modelLabel = modelSourceLabels[modelSource];
+    addEntry("system", `Loading ${modelLabel}\u2026`);
+
+    try {
+      const { Utterance } = await import("@utterance/core");
+
+      // Map model source to modelPath option
+      const modelPath = modelSource === "none"
+        ? "disabled"
+        : modelSource;
+
+      const detector = new Utterance({
+        sensitivity,
+        pauseTolerance,
+        modelPath,
+      });
+
+      detector.on("speechStart", () => {
+        addEntry("speechStart", "Speech detected");
+      });
+
+      detector.on("pause", (e) => {
+        addEntry(
+          "pause",
+          `Duration: ${e.duration}ms \u00b7 Confidence: ${e.confidence.toFixed(2)}`
+        );
+      });
+
+      detector.on("turnEnd", (e) => {
+        addEntry(
+          "turnEnd",
+          `Confidence: ${e.confidence.toFixed(2)} \u00b7 Duration: ${e.duration}ms`
+        );
+      });
+
+      detector.on("interrupt", () => {
+        addEntry("interrupt", "User interrupted");
+      });
+
+      await detector.start();
+      detectorRef.current = detector;
+      setListening(true);
+      setActiveModel(modelSource);
+      addEntry(
+        "system",
+        modelSource === "none"
+          ? "EnergyVAD active \u2014 microphone active, start speaking\u2026"
+          : `Model loaded (${modelSourceDescriptions[modelSource]}) \u2014 start speaking\u2026`
+      );
+    } catch (err) {
+      addEntry("system", `Failed to start: ${err instanceof Error ? err.message : String(err)}`);
+    } finally {
+      setLoading(false);
+    }
+  }, [addEntry, sensitivity, pauseTolerance, modelSource]);
 
   const handleStop = useCallback(() => {
     detectorRef.current?.stop();
     detectorRef.current = null;
     setListening(false);
+    setActiveModel(null);
     addEntry("system", "Stopped listening.");
   }, [addEntry]);
 
@@ -202,6 +243,38 @@ export function Playground() {
         </div>
       </div>
 
+      {/* Model info bar */}
+      <div className="pg-model-bar">
+        <Cpu size={12} />
+        <span className="pg-model-label">
+          {activeModel
+            ? modelSourceLabels[activeModel]
+            : modelSourceLabels[modelSource]}
+        </span>
+        <span className="pg-model-sep" />
+        <span className="pg-model-detail">
+          {activeModel
+            ? modelSourceDescriptions[activeModel]
+            : modelSourceDescriptions[modelSource]}
+        </span>
+        {activeModel && (
+          <>
+            <span className="pg-model-sep" />
+            <span className="pg-model-status pg-model-status--active">
+              active
+            </span>
+          </>
+        )}
+        {loading && (
+          <>
+            <span className="pg-model-sep" />
+            <span className="pg-model-status pg-model-status--loading">
+              loading
+            </span>
+          </>
+        )}
+      </div>
+
       {/* Event log */}
       <div className="pg-log">
         {entries.length === 0 && (
@@ -243,6 +316,37 @@ export function Playground() {
             </Button>
           </div>
           <div className="pg-settings-body">
+            {/* Model source */}
+            <div className="pg-control">
+              <label>
+                <span>Model</span>
+                <span className="pg-control-value">
+                  {modelSourceLabels[modelSource]}
+                </span>
+              </label>
+              <div className="pg-model-options">
+                {(["cdn", "bundled", "none"] as ModelSource[]).map((src) => (
+                  <button
+                    key={src}
+                    type="button"
+                    className={`pg-model-option ${modelSource === src ? "pg-model-option--active" : ""}`}
+                    onClick={() => setModelSource(src)}
+                    disabled={listening}
+                  >
+                    <span className="pg-model-option-label">
+                      {modelSourceLabels[src]}
+                    </span>
+                    <span className="pg-model-option-desc">
+                      {modelSourceDescriptions[src]}
+                    </span>
+                  </button>
+                ))}
+              </div>
+              {listening && (
+                <span className="pg-control-hint">Stop to change</span>
+              )}
+            </div>
+            {/* Sensitivity */}
             <div className="pg-control">
               <label>
                 <span>Sensitivity</span>
@@ -263,6 +367,7 @@ export function Playground() {
                 <span className="pg-control-hint">Stop to change</span>
               )}
             </div>
+            {/* Pause tolerance */}
             <div className="pg-control">
               <label>
                 <span>Pause tolerance</span>
@@ -292,9 +397,12 @@ export function Playground() {
           onClick={listening ? handleStop : handleStart}
           variant={listening ? "destructive" : "default"}
           size="lg"
+          disabled={loading}
           className={`pg-action-btn ${listening ? "pg-action-btn--active" : ""}`}
         >
-          {listening ? (
+          {loading ? (
+            "Loading model\u2026"
+          ) : listening ? (
             <>
               <Square size={16} />
               Stop
