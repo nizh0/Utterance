@@ -28,7 +28,7 @@ const eventLabels = [
   { key: "interrupt", label: "interrupt" },
 ];
 
-export function Demo() {
+export function Playground() {
   const [listening, setListening] = useState(false);
   const [entries, setEntries] = useState<LogEntry[]>([]);
   const [sensitivity, setSensitivity] = useState(0.5);

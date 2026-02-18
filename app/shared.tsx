@@ -55,7 +55,7 @@ const defaultNavLinks = [
   { label: "Benefits", href: "/#benefits" },
   { label: "Quick start", href: "/#quick-start" },
   { label: "Docs", href: "/docs" },
-  { label: "Demo", href: "/demo" },
+  { label: "Playground", href: "/playground" },
 ];
 
 export function NavBar({
@@ -118,9 +118,9 @@ export function Footer() {
             <Code2 size={16} aria-hidden="true" />
             Docs
           </Link>
-          <Link href="/demo" className="landing-footer-link">
+          <Link href="/playground" className="landing-footer-link">
             <Mic size={16} aria-hidden="true" />
-            Demo
+            Playground
           </Link>
           <a
             href="https://github.com/nizh0/Utterance"

@@ -102,7 +102,7 @@ export default function HomePage() {
               <Link href="/docs/quick-start">Get started</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/demo">Live demo</Link>
+              <Link href="/playground">Playground</Link>
             </Button>
           </div>
           <div className="landing-hero-install" role="group" aria-label="Install command">

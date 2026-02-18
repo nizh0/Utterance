@@ -12,8 +12,8 @@ export default function Layout({ children }: { children: ReactNode }) {
       }}
       links={[
         {
-          text: "Demo",
-          url: "/demo",
+          text: "Playground",
+          url: "/playground",
         },
       ]}
       githubUrl="https://github.com/nizh0/Utterance"

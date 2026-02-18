@@ -7,9 +7,9 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Live Demo -->
+  <!-- Playground -->
   <url>
-    <loc>https://utterance.dev/demo</loc>
+    <loc>https://utterance.dev/playground</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
