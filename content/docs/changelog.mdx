@@ -1,0 +1,26 @@
+---
+title: Changelog
+description: All notable changes to @utterance/core.
+---
+
+All notable changes to this project will be documented here.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [0.0.1] — 2025-02-18
+
+### Added
+
+- Core `Utterance` class with event-driven API (`speechStart`, `pause`, `turnEnd`, `interrupt`)
+- `TurnDetector` state machine for turn-taking logic with configurable sensitivity and pause tolerance
+- `AudioCapture` module using the Web Audio API (microphone access, real-time audio processing)
+- `FeatureExtractor` with energy computation and stubs for MFCCs, pitch, and speech rate
+- `ONNXModel` module for ONNX Runtime Web inference
+- `EnergyVAD` baseline classifier using RMS energy thresholds as fallback when no ONNX model is loaded
+- Dual-format build: ESM (`dist/index.js`) and CommonJS (`dist/index.cjs`) with TypeScript declarations
+- Shared type definitions in `src/types.ts`
+- Documentation site at [utterance.dev](https://utterance.dev) with quick start, API reference, and architecture guides
+- Interactive playground at `/playground` for real-time event testing
+- 11 passing tests for the detector and feature extractor
