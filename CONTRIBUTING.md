@@ -34,13 +34,36 @@ Write clean and easy-to-read code. Add comments where the logic isn't clear. If 
 ### 4. Test
 
 ```bash
-npm run test
-npm run lint
+npm run test         # run unit tests
+npm run lint         # check code style
+npm run typecheck    # check TypeScript types
+npm run build        # build ESM + CJS + types into dist/
 ```
 
 Ensure everything passes before submitting.
 
-### 5. Submit a Pull Request
+### 5. Test in the Browser
+
+To test your changes in a real browser with microphone access:
+
+```bash
+npm run build
+npx serve .
+```
+
+Then open **http://localhost:3000/examples/basic/** in your browser. The demo provides a live event log so you can see `speechStart`, `pause`, `turnEnd`, and `interrupt` events as they fire.
+
+For active development, run these in separate terminal tabs:
+
+```bash
+npm run dev          # rebuilds on every file save
+npm run test:watch   # re-runs tests on every file save
+npx serve .          # serves the project locally
+```
+
+This gives you a full dev loop: edit code, see tests re-run automatically, and refresh the browser to test.
+
+### 6. Submit a Pull Request
 
 Push your branch and open a pull request against `main`. In your PR description:
 
