@@ -47,6 +47,7 @@ Push your branch and open a pull request against `main`. In your PR description:
 - Describe what you changed and why
 - Link any related issues
 - Include a screenshot or recording if it involves UI or audio changes
+- Update [CHANGELOG.md](CHANGELOG.md) under the `[Unreleased]` section
 
 We review pull requests within 48 hours.
 
@@ -114,7 +115,8 @@ Utterance/
 ├── docs/
 ├── package.json
 ├── README.md
-└── CONTRIBUTING.md
+├── CONTRIBUTING.md
+└── CHANGELOG.md
 ```
 
 ## Code Style
@@ -165,6 +167,24 @@ When submitting model changes, include:
 - Accuracy metrics on the test set
 - Model size (must remain under 5MB)
 - Inference time benchmarks
+
+## Updating the Changelog
+
+We maintain a [CHANGELOG.md](CHANGELOG.md) following the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format. Every pull request that changes user-facing behavior should include an update to the changelog.
+
+Add your entry under the `[Unreleased]` section using one of these categories:
+
+- **Added** for new features
+- **Changed** for changes to existing functionality
+- **Fixed** for bug fixes
+- **Removed** for features that were removed
+
+Keep entries short and written from the user's perspective. For example:
+
+```
+### Added
+- Pitch detection using YIN autocorrelation algorithm
+```
 
 ## Reporting Bugs
 
