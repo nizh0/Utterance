@@ -199,8 +199,8 @@ detector.on("interrupt", () => {
 - [ ] ONNX export & browser runtime
 - [ ] npm package (`@utterance/core`)
 - [ ] React hooks (`@utterance/react`)
+- [ ] React Native support (`@utterance/react-native`)
 - [ ] Multi-language support
-- [ ] Utterance Cloud (premium hosted models)
 
 ## Contributing
 
