@@ -28,8 +28,6 @@ The current solutions either:
 
 ## Quick Start
 
-### JavaScript / TypeScript
-
 ```bash
 npm install @utterance/core
 ```
@@ -65,32 +63,6 @@ await detector.start();
 detector.stop();
 ```
 
-### Python
-
-```bash
-pip install utterance-sdk
-```
-
-```python
-from utterance_sdk import Utterance
-
-detector = Utterance()
-
-@detector.on('turn_end')
-def handle_turn_end(result):
-    print(f"User is done speaking (confidence: {result.confidence})")
-
-@detector.on('pause')
-def handle_pause(result):
-    print(f"User is thinking... ({result.duration}ms)")
-
-@detector.on('interrupt')
-def handle_interrupt():
-    print("User wants to speak — stop AI response")
-
-detector.start()
-```
-
 ## How It Works
 
 Utterance is **not** a traditional Voice Activity Detector (VAD). VADs distinguish sound from silence. Utterance understands **conversational intent**.
@@ -102,7 +74,7 @@ Utterance:           Sound → Speaking | Silence → Thinking? Done? Wants to i
 
 Under the hood:
 
-1. **Audio capture**: Streams microphone input via Web Audio API (browser) or PyAudio (Python).
+1. **Audio capture**: Streams microphone input via the Web Audio API.
 2. **Feature extraction**: Extracts MFCCs, pitch contour, energy levels, speech rate, and pause duration in real-time.
 3. **Semantic classification**: A lightweight ML model (~3-5MB, ONNX) classifies each audio segment into one of four states:
    - `speaking`: active speech detected
@@ -226,7 +198,6 @@ detector.on("interrupt", () => {
 - [ ] Model v1 training (small transformer)
 - [ ] ONNX export & browser runtime
 - [ ] npm package (`@utterance/core`)
-- [ ] Python package (`utterance-sdk`)
 - [ ] React hooks (`@utterance/react`)
 - [ ] Multi-language support
 - [ ] Utterance Cloud (premium hosted models)
@@ -237,13 +208,12 @@ We're building Utterance in the open, and contributions are welcome.
 
 ### Good First Issues
 
-Check out issues labeled [`good-first-issue`](https://github.com/nizh0/utterance/issues?q=label%3Agood-first-issue) for beginner-friendly tasks.
+Check out issues labeled [`good-first-issue`](https://github.com/nizh0/Utterance/issues?q=label%3Agood-first-issue) for beginner-friendly tasks.
 
 ### Areas We Need Help
 
 - **ML / Audio**: Model architecture, training pipeline, feature engineering
-- **JavaScript**: Browser audio capture, Web Audio API, ONNX runtime integration
-- **Python**: PyAudio integration, package setup
+- **JavaScript / TypeScript**: Browser audio capture, Web Audio API, ONNX runtime integration
 - **Documentation**: Guides, tutorials, examples
 - **Testing**: Real-world conversation testing, edge cases
 
@@ -260,9 +230,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## Community
 
-- [Discord](https://discord.gg/utterance): Chat with contributors
-- [GitHub Issues](https://github.com/nizh0/utterance/issues): Bug reports & feature requests
-- [Roadmap](https://github.com/nizh0/utterance/projects): See what's coming
+- [Discord](https://discord.gg/kb4zMHNtEV): Chat with contributors
+- [GitHub Issues](https://github.com/nizh0/Utterance/issues): Bug reports & feature requests
+- [Roadmap](https://github.com/nizh0/Utterance/projects): See what's coming
 
 ## License
 
