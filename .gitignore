@@ -1,0 +1,29 @@
+node_modules/
+dist/
+*.tsbuildinfo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+
+# Training artifacts
+training/checkpoints/
+training/data/*.wav
+training/data/*.mp3
+training/data/*.flac
+__pycache__/
+*.pyc
+.venv/
+
+# Test coverage
+coverage/

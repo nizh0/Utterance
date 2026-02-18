@@ -1,0 +1,1 @@
+export { FeatureExtractor } from "./extractor";

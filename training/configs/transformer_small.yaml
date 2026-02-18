@@ -1,0 +1,33 @@
+# Utterance Model Configuration — Small Transformer
+#
+# This is the default config for v1 of the model.
+# Target: <5MB ONNX, <50ms inference on modern browsers.
+
+model:
+  architecture: transformer
+  input_dim: 17          # 13 MFCCs + energy + pitch + speech_rate + pause_duration
+  hidden_dim: 64
+  num_heads: 4
+  num_layers: 2
+  num_classes: 4         # speaking, thinking_pause, turn_complete, interrupt_intent
+  dropout: 0.1
+
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  epochs: 50
+  optimizer: adamw
+  scheduler: cosine
+  early_stopping_patience: 5
+
+data:
+  sample_rate: 16000
+  frame_length_ms: 25
+  frame_shift_ms: 10
+  num_mfcc: 13
+
+labels:
+  - speaking
+  - thinking_pause
+  - turn_complete
+  - interrupt_intent
