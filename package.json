@@ -1,6 +1,6 @@
 {
   "name": "@utterance/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Client-side semantic endpointing. Know when they're done talking.",
   "type": "module",
   "main": "dist/index.cjs",

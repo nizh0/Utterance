@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Mic, Brain, Shield, Zap, Box, Code2 } from "lucide-react";
+import { Mic, Brain, Shield, Zap, Box, Code2, Cpu } from "lucide-react";
 import { GitHubIcon, DiscordIcon } from "../shared";
 import { CopyButton } from "../copy-button";
 import { WaveBackground } from "../wave-background";
@@ -120,6 +120,18 @@ export default function HomePage() {
             </code>
             <CopyButton text="npm install @utterance/core" />
           </div>
+          <div className="landing-hero-highlights">
+            <span className="landing-hero-highlight">
+              <Cpu size={14} strokeWidth={1.5} />
+              170 KB ONNX model
+            </span>
+            <span className="landing-hero-highlight-sep" aria-hidden="true" />
+            <span className="landing-hero-highlight">97.8% accuracy</span>
+            <span className="landing-hero-highlight-sep" aria-hidden="true" />
+            <span className="landing-hero-highlight">Runs in-browser via WASM</span>
+            <span className="landing-hero-highlight-sep" aria-hidden="true" />
+            <span className="landing-hero-highlight">v0.0.2</span>
+          </div>
         </div>
       </section>
 
@@ -163,6 +175,79 @@ export default function HomePage() {
               </CardContent>
             </Card>
           ))}
+        </div>
+      </section>
+
+      {/* Model */}
+      <section
+        id="model"
+        className="landing-section"
+        aria-labelledby="model-heading"
+      >
+        <div className="landing-section-header">
+          <Badge
+            variant="outline"
+            className="w-fit rounded-md border-border px-2.5 py-1 text-muted-foreground font-normal text-sm"
+          >
+            <span className="text-muted-foreground">//</span>
+            Under the hood
+          </Badge>
+          <h2 id="model-heading" className="landing-h2">
+            Trained to understand conversations.
+          </h2>
+          <p className="text-base leading-[1.3] text-muted-foreground max-w-[540px]">
+            A hybrid conv + attention model trained on real conversational data.
+            Quantized to int8 and optimized for WASM, so it runs on any device
+            without breaking a sweat.
+          </p>
+        </div>
+        <div className="landing-grid-4" role="list" aria-label="Model stats">
+          <Card
+            className="border-none shadow-none gap-0 py-0"
+            role="listitem"
+          >
+            <CardContent className="flex flex-col gap-2 p-5">
+              <span className="landing-stat-number">170 KB</span>
+              <span className="text-base text-muted-foreground">
+                Int8 quantized ONNX model. Loads instantly, even on slow
+                connections.
+              </span>
+            </CardContent>
+          </Card>
+          <Card
+            className="border-none shadow-none gap-0 py-0"
+            role="listitem"
+          >
+            <CardContent className="flex flex-col gap-2 p-5">
+              <span className="landing-stat-number">97.8%</span>
+              <span className="text-base text-muted-foreground">
+                Validation accuracy across all four turn-taking classes.
+              </span>
+            </CardContent>
+          </Card>
+          <Card
+            className="border-none shadow-none gap-0 py-0"
+            role="listitem"
+          >
+            <CardContent className="flex flex-col gap-2 p-5">
+              <span className="landing-stat-number">100 ms</span>
+              <span className="text-base text-muted-foreground">
+                Inference batched every 100ms. Decisions happen before you
+                notice.
+              </span>
+            </CardContent>
+          </Card>
+          <Card
+            className="border-none shadow-none gap-0 py-0"
+            role="listitem"
+          >
+            <CardContent className="flex flex-col gap-2 p-5">
+              <span className="landing-stat-number">4 classes</span>
+              <span className="text-base text-muted-foreground">
+                Speaking, thinking pause, turn complete, and interrupt intent.
+              </span>
+            </CardContent>
+          </Card>
         </div>
       </section>
 

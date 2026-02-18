@@ -308,7 +308,6 @@ export class FeatureExtractor {
    * from 0 to sampleRate/2 on the Mel scale.
    */
   private createMelFilterbank(): Float32Array[] {
-    const numBins = Math.floor(this.nFft / 2) + 1;
     // Pad to power of 2
     let n = 1;
     while (n < this.nFft) n *= 2;

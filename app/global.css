@@ -150,6 +150,32 @@ html {
   padding: 8px 8px 8px 16px;
 }
 
+.landing-hero-highlights {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.landing-hero-highlight {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+}
+
+.landing-hero-highlight-sep {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+}
+
 /* Buttons & Cards are now handled by shadcn/ui components */
 
 /* ----- Sections ----- */
@@ -195,6 +221,24 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ----- Model stats grid ----- */
+.landing-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.landing-stat-number {
+  font-family: var(--font-inter-display), var(--font-inter), sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #fff;
 }
 
 /* ----- Quick Start ----- */
@@ -779,6 +823,10 @@ html {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .landing-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .landing-hero {
     padding-top: 120px;
   }
@@ -816,6 +864,14 @@ html {
 
   .landing-grid-3 {
     grid-template-columns: 1fr;
+  }
+
+  .landing-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-stat-number {
+    font-size: 28px;
   }
 
   .landing-hero-btns {

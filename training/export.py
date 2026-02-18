@@ -28,16 +28,22 @@ def export_to_onnx(
     output_path: Path,
     context_frames: int = 100,
     input_dim: int = 17,
-    opset_version: int = 18,
+    opset_version: int = 17,
 ) -> Path:
-    """Export PyTorch model to ONNX format."""
+    """Export PyTorch model to ONNX format.
+
+    Uses the legacy TorchScript-based exporter for compatibility with
+    onnxruntime int8 quantization (the dynamo exporter produces graphs
+    that fail shape inference during quantization).
+    """
     model.eval()
     model.cpu()
 
     # Create dummy input
     dummy_input = torch.randn(1, context_frames, input_dim)
 
-    # Export
+    # Use legacy TorchScript exporter — the dynamo exporter produces ONNX
+    # graphs with shape annotations that break onnxruntime quantize_dynamic.
     torch.onnx.export(
         model,
         dummy_input,
@@ -51,6 +57,7 @@ def export_to_onnx(
             "input": {0: "batch_size"},
             "output": {0: "batch_size"},
         },
+        dynamo=False,
     )
 
     print(f"Exported ONNX model to {output_path}")
@@ -65,18 +72,13 @@ def quantize_int8(input_path: Path, output_path: Path) -> Path:
     try:
         from onnxruntime.quantization import quantize_dynamic, QuantType
     except ImportError:
-        print("Warning: onnxruntime.quantization not available. Trying alternative...")
-        try:
-            from onnxruntime.quantization import quantize_dynamic, QuantType
-        except ImportError:
-            print("Skipping int8 quantization — install onnxruntime-tools")
-            return input_path
+        print("Skipping int8 quantization — install onnxruntime")
+        return input_path
 
     quantize_dynamic(
         model_input=str(input_path),
         model_output=str(output_path),
         weight_type=QuantType.QInt8,
-        optimize_model=True,
     )
 
     size_mb = os.path.getsize(output_path) / 1024 / 1024
@@ -213,9 +215,9 @@ def main():
     if args.validate:
         validate_onnx(onnx_path, context_frames, input_dim)
 
-        # Compare float32 ONNX with PyTorch (skip for quantized — tolerance is higher)
-        if args.no_quantize:
-            compare_pytorch_onnx(model, onnx_path, context_frames, input_dim)
+        # Compare ONNX with PyTorch (tolerance is higher for quantized models)
+        tolerance = 1e-4 if args.no_quantize else 0.5
+        compare_pytorch_onnx(model, onnx_path, context_frames, input_dim, tolerance=tolerance)
 
     # Final size check
     size_mb = os.path.getsize(onnx_path) / 1024 / 1024

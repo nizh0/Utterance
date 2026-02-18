@@ -14,16 +14,19 @@ export interface UtteranceOptions {
   sensitivity?: number;
   /** Max thinking pause duration (ms) before triggering turnEnd. Default: 1500 */
   pauseTolerance?: number;
-  /** Path to a custom ONNX model. Default: bundled model */
+  /** Model source: "cdn" (default), "bundled", or a custom URL. */
   modelPath?: string;
   /** Audio sample rate in Hz. Default: 16000 */
   sampleRate?: number;
 }
 
+export const MODEL_CDN_URL =
+  "https://pub-46a5feb0029246bcbc93fab6162cff94.r2.dev/v0.0.2/utterance-v1.onnx";
+
 export const DEFAULT_OPTIONS: Required<UtteranceOptions> = {
   sensitivity: 0.5,
   pauseTolerance: 1500,
-  modelPath: "bundled",
+  modelPath: "cdn",
   sampleRate: 16000,
 };
 

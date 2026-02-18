@@ -1,4 +1,5 @@
 import type { AudioFeatures, ClassificationLabel, ClassificationResult, Model } from "../types";
+import { MODEL_CDN_URL } from "../types";
 import { EnergyVAD } from "./energy-vad";
 
 /** Labels ordered to match the model's output indices. */
@@ -66,10 +67,12 @@ export class ONNXModel implements Model {
   }
 
   /**
-   * Load the ONNX model from a bundled path or URL.
+   * Load the ONNX model from CDN, bundled path, or custom URL.
    *
    * Dynamically imports onnxruntime-web to avoid bundling it
    * when the model isn't used (tree-shaking friendly).
+   *
+   * @param path - "cdn" (default, loads from Cloudflare R2), "bundled" (from npm package), or a custom URL.
    */
   async load(path: string): Promise<void> {
     try {
@@ -77,9 +80,24 @@ export class ONNXModel implements Model {
       const ort = await import("onnxruntime-web") as unknown as OrtModule;
       this.ort = ort;
 
-      // Resolve model path
+      // Resolve model source
       let modelSource: string | ArrayBuffer = path;
-      if (path === "bundled") {
+
+      if (path === "cdn") {
+        // Fetch from Cloudflare R2 CDN (default)
+        try {
+          const response = await fetch(MODEL_CDN_URL);
+          if (response.ok) {
+            modelSource = await response.arrayBuffer();
+          } else {
+            throw new Error(`Failed to fetch CDN model: ${response.status}`);
+          }
+        } catch {
+          console.warn("[utterance] CDN model unavailable, falling back to EnergyVAD");
+          this.session = null;
+          return;
+        }
+      } else if (path === "bundled") {
         // Try to resolve from the package's models/ directory
         try {
           const response = await fetch(new URL("../../models/utterance-v1.onnx", import.meta.url).href);
