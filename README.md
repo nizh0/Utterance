@@ -15,16 +15,16 @@
 
 ## The Problem
 
-Every voice app has the same frustrating issue: **it can't tell when you're done talking.**
+Every voice app faces the same annoying problem: **it can't tell when you're done talking.**
 
-You pause to think — it cuts you off. You take a breath — it responds too early. You want to interrupt — it keeps talking.
+You pause to think, and it cuts you off. You take a breath, and it responds too soon. You want to interrupt, and it keeps going.
 
-Current solutions either:
+The current solutions either:
 
-- **Detect silence** (Silero VAD, ricky0123/vad) — they know when sound stops, but not whether you're thinking or finished
-- **Use server-side AI** (OpenAI Realtime, AssemblyAI) — smart, but adds latency, cost, and privacy concerns
+- **Detect silence** (Silero VAD, ricky0123/vad): They know when sound stops, but they can't tell if you're thinking or finished.
+- **Use server-side AI** (OpenAI Realtime, AssemblyAI): They are smart, but they add delay, costs, and privacy issues.
 
-**Utterance is different.** It runs a lightweight ML model entirely on the client side that understands the difference between a thinking pause and a completed turn. No cloud. No latency. No per-minute pricing.
+**Utterance is different.** It uses a lightweight ML model entirely on the client side. It recognizes the difference between a thinking pause and a completed turn. No cloud. No delay. No per-minute fees.
 
 ## Quick Start
 
@@ -93,7 +93,7 @@ detector.start()
 
 ## How It Works
 
-Utterance is **not** a traditional Voice Activity Detector (VAD). VADs detect sound vs. silence. Utterance understands **conversational intent**.
+Utterance is **not** a traditional Voice Activity Detector (VAD). VADs distinguish sound from silence. Utterance understands **conversational intent**.
 
 ```
 Traditional VAD:     Sound → Speaking | Silence → Not Speaking
@@ -102,14 +102,14 @@ Utterance:           Sound → Speaking | Silence → Thinking? Done? Wants to i
 
 Under the hood:
 
-1. **Audio capture** — streams microphone input via Web Audio API (browser) or PyAudio (Python)
-2. **Feature extraction** — extracts MFCCs, pitch contour, energy levels, speech rate, and pause duration in real-time
-3. **Semantic classification** — a lightweight ML model (~3-5MB, ONNX) classifies each audio segment into one of four states:
-   - `speaking` — active speech detected
-   - `thinking_pause` — silence, but the speaker isn't done yet
-   - `turn_complete` — the speaker has finished their thought
-   - `interrupt_intent` — the listener wants to take over
-4. **Event emission** — fires events your app can react to instantly
+1. **Audio capture**: Streams microphone input via Web Audio API (browser) or PyAudio (Python).
+2. **Feature extraction**: Extracts MFCCs, pitch contour, energy levels, speech rate, and pause duration in real-time.
+3. **Semantic classification**: A lightweight ML model (~3-5MB, ONNX) classifies each audio segment into one of four states:
+   - `speaking`: active speech detected
+   - `thinking_pause`: silence, but the speaker isn't done yet
+   - `turn_complete`: the speaker has finished their thought
+   - `interrupt_intent`: the listener wants to take over
+4. **Event emission**: Fires events your app can react to instantly.
 
 ```
 [Mic] → [Audio Stream] → [Feature Extraction] → [Utterance Model] → [Events]
@@ -122,13 +122,13 @@ Under the hood:
 
 ## Key Features
 
-- 🧠 **Semantic endpointing** — understands thinking pauses vs. turn completion
-- 🔇 **Interrupt detection** — knows when a user wants to interject
-- 📊 **Confidence scoring** — returns probability (0-1) for each detection
-- ⚡ **Client-side only** — no cloud, no latency, no API costs
-- 🪶 **Lightweight** — model under 5MB, inference under 50ms
-- 🔌 **Framework agnostic** — works with any voice stack
-- 🔒 **Privacy first** — audio never leaves the device
+- **Semantic endpointing**: understands thinking pauses vs. turn completion
+- **Interrupt detection**: knows when a user wants to interject
+- **Confidence scoring**: returns probability (0-1) for each detection
+- **Client-side only**: no cloud, no latency, no API costs
+- **Lightweight**: model under 5MB, inference under 50ms
+- **Framework agnostic**: works with any voice stack
+- **Privacy first**: audio never leaves the device
 
 ## API
 
@@ -164,7 +164,7 @@ const detector = new Utterance(options);
 
 ## Integrations
 
-Utterance works alongside your existing voice stack. It handles **when** to act — not **what** to transcribe or say.
+Utterance works with your existing voice stack. It handles **when** to act — not **what** to transcribe or say.
 
 ### With Whisper (Speech-to-Text)
 
@@ -233,7 +233,7 @@ detector.on("interrupt", () => {
 
 ## Contributing
 
-We're building Utterance in the open and contributions are welcome.
+We're building Utterance in the open, and contributions are welcome.
 
 ### Good First Issues
 
@@ -241,11 +241,11 @@ Check out issues labeled [`good-first-issue`](https://github.com/nizh0/utterance
 
 ### Areas We Need Help
 
-- 🧠 **ML / Audio** — Model architecture, training pipeline, feature engineering
-- 🌐 **JavaScript** — Browser audio capture, Web Audio API, ONNX runtime integration
-- 🐍 **Python** — PyAudio integration, package setup
-- 📖 **Documentation** — Guides, tutorials, examples
-- 🧪 **Testing** — Real-world conversation testing, edge cases
+- **ML / Audio**: Model architecture, training pipeline, feature engineering
+- **JavaScript**: Browser audio capture, Web Audio API, ONNX runtime integration
+- **Python**: PyAudio integration, package setup
+- **Documentation**: Guides, tutorials, examples
+- **Testing**: Real-world conversation testing, edge cases
 
 ### Setup
 
@@ -260,9 +260,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## Community
 
-- 💬 [Discord](https://discord.gg/utterance) — Chat with contributors
-- 🐛 [GitHub Issues](https://github.com/nizh0/utterance/issues) — Bug reports & feature requests
-- 🗺️ [Roadmap](https://github.com/nizh0/utterance/projects) — See what's coming
+- [Discord](https://discord.gg/utterance): Chat with contributors
+- [GitHub Issues](https://github.com/nizh0/utterance/issues): Bug reports & feature requests
+- [Roadmap](https://github.com/nizh0/utterance/projects): See what's coming
 
 ## License
 
