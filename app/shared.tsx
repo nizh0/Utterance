@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mic, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MobileMenu } from "./mobile-menu";
 
 export function DiscordIcon({ size = 16 }: { size?: number }) {
   return (
@@ -97,6 +98,7 @@ export function NavBar({
               <GitHubIcon size={16} />
             </a>
           </Button>
+          <MobileMenu links={links} />
         </div>
       </div>
     </nav>

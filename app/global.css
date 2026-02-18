@@ -84,23 +84,6 @@ html {
   align-items: center;
 }
 
-.landing-btn-sm {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  color: rgb(133, 133, 133);
-  background-color: transparent;
-  border-radius: 50%;
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.landing-btn-sm:hover {
-  color: #fff;
-}
-
 /* ----- Hero ----- */
 .landing-hero {
   position: relative;
@@ -678,7 +661,59 @@ html {
   display: none !important;
 }
 
+/* ----- Mobile menu ----- */
+.landing-mobile-menu-btn {
+  display: none !important;
+}
+
+.landing-mobile-menu {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 49;
+  background-color: rgb(10, 9, 8);
+  animation: mobile-menu-in 0.2s ease-out;
+}
+
+@keyframes mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.landing-mobile-menu-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px;
+}
+
+.landing-mobile-menu-link {
+  padding: 14px 0;
+  font-size: 18px;
+  color: rgb(133, 133, 133);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: color 0.15s;
+}
+
+.landing-mobile-menu-link:last-child {
+  border-bottom: none;
+}
+
+.landing-mobile-menu-link:hover {
+  color: #fff;
+}
+
 /* ----- Responsive ----- */
+
+/* Tablet (481–810px) */
 @media (max-width: 810px) {
   .landing-h1 {
     font-size: 40px;
@@ -696,9 +731,24 @@ html {
     padding-top: 120px;
   }
 
+  /* Nav: hide text links, show hamburger */
+  .landing-nav-links {
+    display: none;
+  }
+
+  .landing-mobile-menu-btn {
+    display: flex !important;
+  }
+
+  /* Footer: stack vertically, wrap nav */
   .landing-footer-inner {
     flex-direction: column;
-    gap: 40px;
+    gap: 24px;
+  }
+
+  .landing-footer-nav {
+    flex-wrap: wrap !important;
+    gap: 16px !important;
   }
 
   /* Dashboard responsive */
@@ -708,13 +758,20 @@ html {
 
   .dash {
     flex-direction: column;
-    gap: 8px;
+    gap: 0;
+  }
+
+  .dash-console {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .dash-sidebar {
     width: 100%;
     display: none;
     order: -1;
+    border-left: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .dash-sidebar--open {
@@ -728,6 +785,7 @@ html {
   }
 }
 
+/* Mobile (≤480px) */
 @media (max-width: 480px) {
   .landing-h1 {
     font-size: 32px;
@@ -748,10 +806,13 @@ html {
 
   .landing-hero-btns a {
     width: 100%;
+    text-align: center;
   }
 
-  .landing-nav-links {
-    display: none;
+  /* Hero install pill: allow wrapping on very narrow screens */
+  .landing-hero-install {
+    white-space: normal;
+    max-width: 100%;
   }
 
   .landing-section {
@@ -764,6 +825,10 @@ html {
 
   .landing-footer {
     padding: 24px;
+  }
+
+  .landing-footer-nav {
+    gap: 12px !important;
   }
 
   .playground-dashboard {

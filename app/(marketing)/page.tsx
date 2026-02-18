@@ -180,8 +180,8 @@ export default function HomePage() {
 
       {/* CTA */}
       <section className="landing-section" style={{ paddingBottom: 48 }} aria-labelledby="cta-heading">
-        <Card className="w-full h-[360px] border-none shadow-none">
-          <CardContent className="flex-1 flex flex-col justify-center items-start gap-3 p-10">
+        <Card className="w-full min-h-[280px] md:min-h-[360px] border-none shadow-none">
+          <CardContent className="flex-1 flex flex-col justify-center items-start gap-3 p-6 sm:p-10">
             <h2 id="cta-heading" className="landing-h2">Open source. Community driven.</h2>
             <p className="text-base leading-[1.3] text-muted-foreground max-w-[360px]">
               MIT licensed. Free forever. Star us on GitHub, join the Discord,
