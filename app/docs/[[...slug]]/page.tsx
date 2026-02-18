@@ -34,8 +34,24 @@ export async function generateMetadata(props: {
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
+  const slug = params.slug?.join("/") || "";
+  const url = `https://utterance.dev/docs${slug ? `/${slug}` : ""}`;
+
   return {
     title: page.data.title,
-    description: page.data.description,
+    description:
+      page.data.description ||
+      `${page.data.title} — Utterance SDK documentation.`,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: `${page.data.title} — Utterance Docs`,
+      description:
+        page.data.description ||
+        `${page.data.title} — Utterance SDK documentation.`,
+      url,
+      type: "article",
+    },
   };
 }

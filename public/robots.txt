@@ -1,0 +1,10 @@
+# https://utterance.dev
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://utterance.dev/sitemap.xml
+
+# Crawl-delay (optional, for polite crawlers)
+Crawl-delay: 1
