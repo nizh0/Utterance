@@ -56,12 +56,12 @@ See the [full documentation](https://utterance.dev/docs/quick-start) for detaile
 
 | Feature | Silero VAD | ricky0123/vad | Picovoice Cobra | OpenAI Realtime | **Utterance** |
 | --- | --- | --- | --- | --- | --- |
-| Detects speech vs. silence | Yes | Yes | Yes | Yes | Yes |
-| Semantic pause detection | No | No | No | Yes | Yes |
-| Interrupt detection | No | No | No | Yes | Yes |
-| Runs client-side | Yes | Yes | Yes | No | Yes |
-| No API costs | Yes | Yes | No | No | Yes |
-| Privacy (audio stays local) | Yes | Yes | Yes | No | Yes |
+| Detects speech vs. silence | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Semantic pause detection | ❌ | ❌ | ❌ | ✅ | ✅ |
+| Interrupt detection | ❌ | ❌ | ❌ | ✅ | ✅ |
+| Runs client-side | ✅ | ✅ | ✅ | ❌ | ✅ |
+| No API costs | ✅ | ✅ | ❌ | ❌ | ✅ |
+| Privacy (audio stays local) | ✅ | ✅ | ✅ | ❌ | ✅ |
 
 ## Contributing
 
