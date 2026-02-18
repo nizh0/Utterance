@@ -34,3 +34,6 @@ out/
 
 # Fumadocs
 .source/
+
+# OpenNext / Cloudflare
+.open-next/

@@ -23,6 +23,8 @@
     "build": "npm run build:sdk && next build",
     "build:sdk": "tsup src/index.ts --format esm,cjs --dts --clean --tsconfig tsconfig.sdk.json",
     "build:sdk:watch": "tsup src/index.ts --watch --format esm,cjs --dts --tsconfig tsconfig.sdk.json",
+    "preview": "npm run build:sdk && opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "npm run build:sdk && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint src/ tests/",
@@ -68,9 +70,11 @@
     "tsup": "^8.0.0",
     "typescript": "^5.7.0",
     "typescript-eslint": "^8.0.0",
-    "vitest": "^3.0.0"
+    "vitest": "^3.0.0",
+    "wrangler": "^4.66.0"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "^1.16.5",
     "fumadocs-core": "^16.6.3",
     "fumadocs-mdx": "^14.2.7",
     "fumadocs-ui": "^16.6.3",
