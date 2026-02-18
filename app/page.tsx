@@ -23,6 +23,25 @@ function GitHubIcon({ size = 16 }: { size?: number }) {
   );
 }
 import { CopyButton } from "./copy-button";
+import { WaveBackground } from "./wave-background";
+
+function Logo() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="1" y="7" width="2.5" height="6" rx="1.25" fill="white" />
+      <rect x="5.5" y="4" width="2.5" height="12" rx="1.25" fill="white" />
+      <rect x="10" y="1" width="2.5" height="18" rx="1.25" fill="white" />
+      <rect x="14.5" y="4" width="2.5" height="12" rx="1.25" fill="white" />
+      <rect x="19" y="7" width="2.5" height="6" rx="1.25" fill="white" />
+    </svg>
+  );
+}
 
 const benefits = [
   {
@@ -35,19 +54,19 @@ const benefits = [
     icon: Zap,
     title: "Zero latency",
     description:
-      "On-device inference means instant results. No round-trip to a server — decisions happen in milliseconds.",
+      "On-device inference means instant results. No round trip to a server. Decisions happen in milliseconds.",
   },
   {
     icon: Mic,
     title: "Privacy first",
     description:
-      "Audio never leaves the user\u2019s device. No recording, no uploading, no third-party processing.",
+      "Audio never leaves the user’s device. No recording, no uploading, no third-party processing.",
   },
   {
     icon: Brain,
     title: "Lightweight model",
     description:
-      "Small ONNX model that loads fast and runs efficiently. Designed for real-time performance on any device.",
+      "Small ONNX model that loads fast and runs efficiently. It is designed for real-time performance on any device.",
   },
   {
     icon: Box,
@@ -76,7 +95,7 @@ detector.on("pause", (result) => {
 });
 
 detector.on("interrupt", () => {
-  console.log("User wants to speak — stop AI response");
+  console.log("User wants to speak. Stop AI response");
 });
 
 await detector.start();`;
@@ -95,18 +114,7 @@ export default function HomePage() {
       <nav className="landing-nav">
         <div className="landing-nav-inner">
           <Link href="/" className="landing-nav-logo">
-            <svg
-              width="24"
-              height="16"
-              viewBox="0 0 24 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M4 0L12 16L20 0H24L12 16L0 0H4Z"
-                fill="white"
-              />
-            </svg>
+            <Logo />
             <span className="landing-nav-logo-text">Utterance</span>
           </Link>
           <div className="landing-nav-links">
@@ -135,14 +143,12 @@ export default function HomePage() {
 
       {/* Hero */}
       <section className="landing-hero">
+        <WaveBackground />
         <div className="landing-hero-content">
-          <h1 className="landing-h1">
-            Know when they&apos;re done talking.
-          </h1>
+          <h1 className="landing-h1">Know when they finish talking.</h1>
           <p className="landing-hero-sub">
             Client-side semantic endpointing for voice apps. Detect turn
-            completion, thinking pauses, and interrupts — entirely in the
-            browser.
+            completion, thinking pauses, and interrupts entirely in the browser.
           </p>
           <div className="landing-hero-btns">
             <Link href="/docs/quick-start" className="landing-btn-primary">
@@ -152,13 +158,21 @@ export default function HomePage() {
               Live demo
             </Link>
           </div>
+          <div className="landing-hero-install">
+            <code className="landing-install-text">
+              npm install @utterance/core
+            </code>
+            <CopyButton text="npm install @utterance/core" />
+          </div>
         </div>
       </section>
 
       {/* Benefits */}
       <section id="benefits" className="landing-section">
         <div className="landing-section-header">
-          <span className="landing-badge"><span className="landing-badge-prefix">//</span>Benefits</span>
+          <span className="landing-badge">
+            <span className="landing-badge-prefix">//</span>Benefits
+          </span>
           <h2 className="landing-h2">Why Utterance?</h2>
         </div>
         <div className="landing-grid-3">
@@ -179,7 +193,9 @@ export default function HomePage() {
       {/* Quick Start */}
       <section id="quick-start" className="landing-section">
         <div className="landing-section-header">
-          <span className="landing-badge"><span className="landing-badge-prefix">//</span>Quick start</span>
+          <span className="landing-badge">
+            <span className="landing-badge-prefix">//</span>Quick start
+          </span>
           <h2 className="landing-h2">
             Install and start detecting in seconds.
           </h2>
@@ -209,9 +225,7 @@ export default function HomePage() {
       <section className="landing-section" style={{ paddingBottom: 48 }}>
         <div className="landing-cta-card">
           <div className="landing-cta-inner">
-            <h2 className="landing-h2">
-              Open source. Community driven.
-            </h2>
+            <h2 className="landing-h2">Open source. Community driven.</h2>
             <p className="landing-body" style={{ maxWidth: 360 }}>
               MIT licensed. Free forever. Star us on GitHub, join the Discord,
               or open a PR.
@@ -245,31 +259,20 @@ export default function HomePage() {
         <div className="landing-footer-inner">
           <div className="landing-footer-left">
             <Link href="/" className="landing-nav-logo">
-              <svg
-                width="24"
-                height="16"
-                viewBox="0 0 24 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M4 0L12 16L20 0H24L12 16L0 0H4Z"
-                  fill="white"
-                />
-              </svg>
+              <Logo />
               <span className="landing-nav-logo-text">Utterance</span>
             </Link>
             <p className="landing-footer-desc">
-              Client-side semantic endpointing. Know when they&apos;re done
-              talking.
+              Client-side semantic endpointing. Know when they’re done talking.
             </p>
           </div>
           <div className="landing-footer-nav">
-            <span className="landing-footer-nav-title">Navigation</span>
             <Link href="/docs" className="landing-footer-link">
+              <Code2 size={16} />
               Docs
             </Link>
             <Link href="/demo" className="landing-footer-link">
+              <Mic size={16} />
               Demo
             </Link>
             <a
@@ -278,6 +281,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="landing-footer-link"
             >
+              <GitHubIcon size={16} />
               GitHub
             </a>
             <a
@@ -286,6 +290,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="landing-footer-link"
             >
+              <MessageCircle size={16} />
               Discord
             </a>
           </div>

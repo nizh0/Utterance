@@ -99,13 +99,29 @@ html {
 
 /* ----- Hero ----- */
 .landing-hero {
+  position: relative;
   padding: 160px 24px 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+}
+
+.wave-bg-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wave-bg-container canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .landing-hero-content {
+  position: relative;
+  z-index: 1;
   max-width: 800px;
   display: flex;
   flex-direction: column;
@@ -134,6 +150,17 @@ html {
   display: flex;
   gap: 12px;
   align-items: center;
+}
+
+.landing-hero-install {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 100px;
+  padding: 8px 8px 8px 16px;
 }
 
 /* ----- Buttons ----- */
@@ -402,24 +429,27 @@ html {
 }
 
 .landing-footer-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.landing-footer-nav-title {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.3em;
-  color: #fff;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 24px;
 }
 
 .landing-footer-link {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 6px;
   font-size: 14px;
   line-height: 1.3em;
   color: rgb(133, 133, 133);
   text-decoration: none;
   transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.landing-footer-link svg {
+  flex-shrink: 0;
 }
 
 .landing-footer-link:hover {
