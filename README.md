@@ -192,7 +192,7 @@ detector.on("interrupt", () => {
 ## Roadmap
 
 - [x] Core event API design
-- [ ] Energy-based VAD baseline
+- [x] Energy-based VAD baseline
 - [ ] Feature extraction pipeline (MFCCs, pitch, energy)
 - [ ] Training data collection & labeling
 - [ ] Model v1 training (small transformer)

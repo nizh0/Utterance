@@ -1,13 +1,22 @@
 import type { AudioFeatures, ClassificationResult, Model } from "../types";
+import { EnergyVAD } from "./energy-vad";
 
 /**
  * Runs inference on extracted audio features using an ONNX model.
+ *
+ * When no ONNX model is loaded (the current default), falls back to
+ * the EnergyVAD baseline which uses RMS energy thresholds.
  *
  * Contributors: implement the actual ONNX Runtime Web integration here.
  * See https://onnxruntime.ai/docs/get-started/with-javascript/web.html
  */
 export class ONNXModel implements Model {
   private session: unknown = null;
+  private fallback: EnergyVAD;
+
+  constructor(sensitivity = 0.5) {
+    this.fallback = new EnergyVAD(sensitivity);
+  }
 
   /**
    * Load the ONNX model from a given path or URL.
@@ -18,7 +27,7 @@ export class ONNXModel implements Model {
    *   3. Create session with appropriate execution providers
    */
   async load(_path: string): Promise<void> {
-    // Placeholder — model loading not yet implemented
+    // Falls back to EnergyVAD until a real model is trained
     this.session = null;
   }
 
@@ -30,22 +39,13 @@ export class ONNXModel implements Model {
    *   2. Run session.run()
    *   3. Parse output into ClassificationResult
    */
-  async predict(_features: AudioFeatures): Promise<ClassificationResult> {
+  async predict(features: AudioFeatures): Promise<ClassificationResult> {
     if (!this.session) {
-      // Until a real model is trained, return a placeholder
-      return {
-        label: "speaking",
-        confidence: 0,
-        timestamp: Date.now(),
-      };
+      return this.fallback.classify(features);
     }
 
-    // Real inference will go here
-    return {
-      label: "speaking",
-      confidence: 0,
-      timestamp: Date.now(),
-    };
+    // Real ONNX inference will go here
+    return this.fallback.classify(features);
   }
 
   /**
@@ -53,5 +53,6 @@ export class ONNXModel implements Model {
    */
   dispose(): void {
     this.session = null;
+    this.fallback.reset();
   }
 }

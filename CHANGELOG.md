@@ -14,9 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `AudioCapture` module using the Web Audio API
 - `FeatureExtractor` with energy computation and stubs for MFCCs, pitch, and speech rate
 - `ONNXModel` module with stub for ONNX Runtime Web inference
+- `EnergyVAD` baseline classifier using RMS energy thresholds as fallback when no ONNX model is loaded
 - Shared type definitions in `src/types.ts`
 - Training pipeline scaffolding (`train.py`, `export.py`, transformer config)
 - Basic browser example with live event log
+- `npm start` command that runs build, dev server, file watcher, and tests in parallel
 - 11 passing tests for the detector and feature extractor
 - CONTRIBUTING.md with development workflow and contribution areas
 - CHANGELOG.md

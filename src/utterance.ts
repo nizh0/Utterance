@@ -32,7 +32,7 @@ export class Utterance {
 
     this.audio = new AudioCapture(this.options.sampleRate);
     this.features = new FeatureExtractor(this.options.sampleRate);
-    this.model = new ONNXModel();
+    this.model = new ONNXModel(this.options.sensitivity);
     this.detector = new TurnDetector(
       this.options.sensitivity,
       this.options.pauseTolerance,
