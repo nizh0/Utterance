@@ -16,6 +16,6 @@ export default tseslint.config(
     },
   },
   {
-    ignores: ["dist/", "node_modules/", "examples/", "training/"],
+    ignores: ["dist/", "node_modules/", "examples/", "training/", ".next/", ".source/"],
   }
 );

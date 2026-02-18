@@ -1,0 +1,37 @@
+---
+title: How It Works
+description: Understand the architecture behind Utterance's semantic endpointing.
+---
+
+Utterance is **not** a traditional Voice Activity Detector (VAD). VADs distinguish sound from silence. Utterance understands **conversational intent**.
+
+```
+Traditional VAD:     Sound → Speaking | Silence → Not Speaking
+Utterance:           Sound → Speaking | Silence → Thinking? Done? Wants to interrupt?
+```
+
+## Pipeline
+
+1. **Audio capture** — streams microphone input via the Web Audio API
+2. **Feature extraction** — extracts MFCCs, pitch contour, energy levels, speech rate, and pause duration in real-time
+3. **Semantic classification** — a lightweight ML model (~3–5MB, ONNX) classifies each audio segment into one of four states:
+   - `speaking` — active speech detected
+   - `thinking_pause` — silence, but the speaker isn't done yet
+   - `turn_complete` — the speaker has finished their thought
+   - `interrupt_intent` — the listener wants to take over
+4. **Event emission** — fires events your app can react to instantly
+
+```
+[Mic] → [Audio Stream] → [Feature Extraction] → [Utterance Model] → [Events]
+              |                    |                      |
+         Client-side          Client-side            Client-side
+        (Web Audio)        (Lightweight DSP)      (ONNX Runtime)
+```
+
+Everything runs locally. No network requests. No API keys. No per-minute costs.
+
+## Baseline Classifier
+
+While the ML model is being trained, Utterance ships with an **EnergyVAD** baseline classifier. It uses RMS energy thresholds to detect speech vs. silence and relies on pause duration to infer turn completion.
+
+The baseline is functional but cannot distinguish thinking pauses from turn completion with the same accuracy as the upcoming ML model.

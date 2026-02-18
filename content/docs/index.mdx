@@ -1,0 +1,35 @@
+---
+title: Introduction
+description: Client-side semantic endpointing. Know when they're done talking.
+---
+
+# Utterance
+
+Every voice app faces the same problem: **it can't tell when you're done talking.**
+
+You pause to think, and it cuts you off. You take a breath, and it responds too soon. You want to interrupt, and it keeps going.
+
+Current solutions either detect silence (Silero VAD, ricky0123/vad) without understanding intent, or use server-side AI (OpenAI Realtime, AssemblyAI) that adds latency and costs.
+
+**Utterance is different.** It uses a lightweight ML model entirely on the client side. It recognizes the difference between a thinking pause and a completed turn. No cloud. No delay. No per-minute fees.
+
+## Key Features
+
+- **Semantic endpointing** — understands thinking pauses vs. turn completion
+- **Interrupt detection** — knows when a user wants to interject
+- **Confidence scoring** — returns probability (0–1) for each detection
+- **Client-side only** — no cloud, no latency, no API costs
+- **Lightweight** — model under 5MB, inference under 50ms
+- **Framework agnostic** — works with any voice stack
+- **Privacy first** — audio never leaves the device
+
+## Comparison
+
+| Feature | Silero VAD | ricky0123/vad | Picovoice Cobra | OpenAI Realtime | **Utterance** |
+| --- | --- | --- | --- | --- | --- |
+| Detects speech vs. silence | Yes | Yes | Yes | Yes | Yes |
+| Semantic pause detection | No | No | No | Yes | Yes |
+| Interrupt detection | No | No | No | Yes | Yes |
+| Runs client-side | Yes | Yes | Yes | No | Yes |
+| No API costs | Yes | Yes | No | No | Yes |
+| Privacy (audio stays local) | Yes | Yes | Yes | No | Yes |

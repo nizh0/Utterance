@@ -1,0 +1,57 @@
+---
+title: Integrations
+description: Use Utterance with your existing voice stack.
+---
+
+Utterance works with your existing voice stack. It handles **when** to act — not **what** to transcribe or say.
+
+## With Whisper (Speech-to-Text)
+
+```javascript
+import { Utterance } from "@utterance/core";
+import { transcribe } from "./whisper";
+
+const detector = new Utterance();
+let audioBuffer = [];
+
+detector.on("speechStart", () => {
+  audioBuffer = [];
+});
+
+detector.on("turnEnd", async (result) => {
+  if (result.confidence > 0.8) {
+    const text = await transcribe(audioBuffer);
+    // Send to your LLM
+  }
+});
+
+await detector.start();
+```
+
+## With OpenAI Chat
+
+```javascript
+detector.on("turnEnd", async (result) => {
+  const transcript = await getTranscript();
+  const response = await openai.chat.completions.create({
+    model: "gpt-4",
+    messages: [{ role: "user", content: transcript }],
+  });
+  speak(response.choices[0].message.content);
+});
+
+detector.on("interrupt", () => {
+  stopSpeaking(); // Halt TTS immediately
+});
+```
+
+## With Any TTS
+
+Utterance pairs naturally with any text-to-speech system. Use the `interrupt` event to halt playback when the user wants to speak:
+
+```javascript
+detector.on("interrupt", () => {
+  audioElement.pause();
+  audioElement.currentTime = 0;
+});
+```

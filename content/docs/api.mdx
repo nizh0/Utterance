@@ -1,0 +1,94 @@
+---
+title: API Reference
+description: Complete API reference for the Utterance SDK.
+---
+
+## Constructor
+
+```javascript
+import { Utterance } from "@utterance/core";
+
+const detector = new Utterance(options);
+```
+
+### Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `sensitivity` | `number` | `0.5` | Detection sensitivity (0–1). Higher = more sensitive to pauses |
+| `pauseTolerance` | `number` | `1500` | Max thinking pause duration in ms before triggering turnEnd |
+| `modelPath` | `string` | `bundled` | Custom model path (ONNX) |
+| `sampleRate` | `number` | `16000` | Audio sample rate in Hz |
+
+## Methods
+
+| Method | Description |
+| --- | --- |
+| `start()` | Begin listening (returns `Promise<void>`) |
+| `stop()` | Stop listening and release microphone |
+| `isListening()` | Returns current listening state (`boolean`) |
+
+## Events
+
+Register listeners with `detector.on(event, callback)` and remove them with `detector.off(event, callback)`.
+
+### `speechStart`
+
+Fired when the user starts speaking.
+
+```typescript
+detector.on("speechStart", (event) => {
+  event.timestamp; // number — Unix timestamp
+});
+```
+
+### `pause`
+
+Fired when a thinking pause is detected (user likely not done).
+
+```typescript
+detector.on("pause", (event) => {
+  event.duration;   // number — pause duration in ms
+  event.confidence; // number — 0 to 1
+});
+```
+
+### `turnEnd`
+
+Fired when the user finishes speaking (safe to respond).
+
+```typescript
+detector.on("turnEnd", (event) => {
+  event.confidence; // number — 0 to 1
+  event.duration;   // number — total speech duration in ms
+});
+```
+
+### `interrupt`
+
+Fired when the user wants to interject (stop AI response).
+
+```typescript
+detector.on("interrupt", (event) => {
+  event.timestamp; // number — Unix timestamp
+});
+```
+
+## Types
+
+All types are exported from `@utterance/core`:
+
+```typescript
+import type {
+  UtteranceOptions,
+  UtteranceEvent,
+  UtteranceEventMap,
+  SpeechStartEvent,
+  PauseEvent,
+  TurnEndEvent,
+  InterruptEvent,
+  AudioFeatures,
+  ClassificationResult,
+  ClassificationLabel,
+} from "@utterance/core";
+```

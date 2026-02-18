@@ -17,8 +17,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `EnergyVAD` baseline classifier using RMS energy thresholds as fallback when no ONNX model is loaded
 - Shared type definitions in `src/types.ts`
 - Training pipeline scaffolding (`train.py`, `export.py`, transformer config)
-- Basic browser example with live event log
-- `npm start` command that runs build, dev server, file watcher, and tests in parallel
+- Next.js frontend with home page, live demo, and documentation site
+- Fumadocs-powered documentation with MDX content (introduction, quick start, how it works, API reference, integrations, contributing)
+- Live demo page at `/demo` with real-time event log (React port of the basic example)
+- `npm run build` produces both SDK (ESM + CJS + types) and Next.js static site
+- `npm start` runs SDK watcher, Next.js dev server, and tests in parallel
 - 11 passing tests for the detector and feature extractor
 - CONTRIBUTING.md with development workflow and contribution areas
 - CHANGELOG.md

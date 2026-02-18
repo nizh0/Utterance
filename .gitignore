@@ -27,3 +27,10 @@ __pycache__/
 
 # Test coverage
 coverage/
+
+# Next.js
+.next/
+out/
+
+# Fumadocs
+.source/

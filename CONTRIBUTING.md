@@ -37,7 +37,7 @@ Write clean and easy-to-read code. Add comments where the logic isn't clear. If 
 npm run test         # run unit tests
 npm run lint         # check code style
 npm run typecheck    # check TypeScript types
-npm run build        # build ESM + CJS + types into dist/
+npm run build:sdk    # build SDK (ESM + CJS + types) into dist/
 ```
 
 Ensure everything passes before submitting.
@@ -51,19 +51,19 @@ npm start
 ```
 
 This will:
-- Build the project
-- Watch for file changes and rebuild automatically
-- Start a local server at **http://localhost:3000**
+- Build the SDK
+- Watch SDK source for changes and rebuild automatically
+- Start the Next.js dev server at **http://localhost:3000**
 - Run tests in watch mode
 
-Open **http://localhost:3000/examples/basic/** to see the browser demo with a live event log.
+Open **http://localhost:3000** for the home page, **http://localhost:3000/docs** for documentation, or **http://localhost:3000/demo** for the live demo.
 
 You can also run each piece individually if you prefer:
 
 | Command | What it does |
 | --- | --- |
-| `npm run dev` | Rebuild on every file save |
-| `npm run serve` | Local server at port 3000 |
+| `npm run dev` | Next.js dev server |
+| `npm run build:sdk:watch` | Rebuild SDK on every file save |
 | `npm run test:watch` | Re-run tests on every file save |
 
 ### 6. Submit a Pull Request
@@ -120,25 +120,25 @@ Look for issues labeled [`good-first-issue`](https://github.com/nizh0/Utterance/
 
 ```
 Utterance/
-├── src/
-│   ├── audio/          # Audio capture and preprocessing
-│   ├── features/       # Feature extraction (MFCCs, energy, pitch)
-│   ├── model/          # Model loading and inference
-│   ├── detector/       # Turn detection logic and event emission
-│   └── index.ts        # Main entry point
-├── models/
-│   └── utterance-v1.onnx
-├── training/
-│   ├── data/           # Training data scripts
-│   ├── features/       # Feature engineering
-│   ├── train.py        # Model training
-│   └── export.py       # ONNX export
-├── examples/
-│   ├── basic/
-│   ├── with-whisper/
-│   └── with-openai/
-├── tests/
-├── docs/
+├── src/                   # SDK source code
+│   ├── audio/             # Audio capture and preprocessing
+│   ├── features/          # Feature extraction (MFCCs, energy, pitch)
+│   ├── model/             # Model loading and inference
+│   ├── detector/          # Turn detection logic and event emission
+│   └── index.ts           # SDK entry point
+├── app/                   # Next.js app (website + docs + demo)
+│   ├── docs/              # Fumadocs documentation pages
+│   ├── demo/              # Live demo page
+│   └── api/               # API routes (search)
+├── content/docs/          # MDX documentation content
+├── lib/                   # Shared utilities for the website
+├── models/                # ONNX model files
+├── training/              # ML training pipeline
+│   ├── data/              # Training data scripts
+│   ├── features/          # Feature engineering
+│   ├── train.py           # Model training
+│   └── export.py          # ONNX export
+├── tests/                 # Unit tests
 ├── package.json
 ├── README.md
 ├── CONTRIBUTING.md

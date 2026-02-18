@@ -1,0 +1,61 @@
+---
+title: Contributing
+description: How to contribute to Utterance.
+---
+
+We're building Utterance in the open, and contributions are welcome.
+
+## Setup
+
+```bash
+git clone https://github.com/nizh0/Utterance.git
+cd Utterance
+npm install
+npm run start
+```
+
+## Development Workflow
+
+`npm run start` runs the Next.js dev server with Fumadocs, the SDK build watcher, and tests in parallel. Open [http://localhost:3000](http://localhost:3000) to see the site.
+
+### Individual Commands
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Next.js dev server |
+| `npm run build:sdk` | Build SDK (ESM + CJS + types) |
+| `npm run build:sdk:watch` | Rebuild SDK on file changes |
+| `npm run test` | Run unit tests |
+| `npm run test:watch` | Re-run tests on file changes |
+| `npm run lint` | Check code style |
+| `npm run typecheck` | Check TypeScript types |
+
+## Areas We Need Help
+
+**ML & Audio (high priority)**
+- Collecting and labeling training data
+- Building the feature extraction pipeline (MFCCs, pitch, energy, speech rate)
+- Experimenting with model architectures (transformer, LSTM, CNN+GRU)
+- Exporting and quantizing to ONNX
+
+**JavaScript / TypeScript**
+- ONNX Runtime Web integration
+- React hooks package (`@utterance/react`)
+- React Native support (`@utterance/react-native`)
+
+**Documentation**
+- Integration guides
+- Tutorials and blog posts
+
+**Testing**
+- Real-world conversation testing
+- Edge cases (background noise, multiple speakers, accents)
+
+## Submitting a Pull Request
+
+1. Fork and clone the repo
+2. Create a branch (`feature/your-feature`, `fix/your-fix`)
+3. Make your changes and add tests
+4. Run `npm run test && npm run lint && npm run typecheck`
+5. Update [CHANGELOG.md](https://github.com/nizh0/Utterance/blob/main/CHANGELOG.md) under `[Unreleased]`
+6. Open a PR against `main`

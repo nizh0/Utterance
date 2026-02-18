@@ -1,0 +1,45 @@
+---
+title: Quick Start
+description: Get up and running with Utterance in under a minute.
+---
+
+## Installation
+
+```bash
+npm install @utterance/core
+```
+
+## Basic Usage
+
+```javascript
+import { Utterance } from "@utterance/core";
+
+const detector = new Utterance();
+
+detector.on("turnEnd", (result) => {
+  console.log("User is done speaking", result.confidence);
+  // Safe to send to your AI / LLM now
+});
+
+detector.on("pause", (result) => {
+  console.log("User is thinking...", result.duration);
+  // Don't interrupt — they're still going
+});
+
+detector.on("interrupt", () => {
+  console.log("User wants to speak — stop AI response");
+  // Halt TTS playback, yield the floor
+});
+
+detector.on("speechStart", () => {
+  console.log("User started speaking");
+});
+
+// Start listening
+await detector.start();
+
+// Stop when done
+detector.stop();
+```
+
+That's it. Utterance handles the microphone, feature extraction, and classification automatically. You just listen for events.
