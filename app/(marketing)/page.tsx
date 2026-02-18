@@ -4,6 +4,9 @@ import { GitHubIcon, DiscordIcon } from "../shared";
 import { CopyButton } from "../copy-button";
 import { WaveBackground } from "../wave-background";
 import { SyntaxHighlight } from "../syntax-highlight";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 const benefits = [
   {
@@ -75,12 +78,12 @@ export default function HomePage() {
             completion, thinking pauses, and interrupts entirely in the browser.
           </p>
           <div className="landing-hero-btns">
-            <Link href="/docs/quick-start" className="landing-btn-primary">
-              Get started
-            </Link>
-            <Link href="/demo" className="landing-btn-secondary">
-              Live demo
-            </Link>
+            <Button asChild size="lg">
+              <Link href="/docs/quick-start">Get started</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link href="/demo">Live demo</Link>
+            </Button>
           </div>
           <div className="landing-hero-install">
             <code className="landing-install-text">
@@ -94,22 +97,30 @@ export default function HomePage() {
       {/* Benefits */}
       <section id="benefits" className="landing-section">
         <div className="landing-section-header">
-          <span className="landing-badge">
-            <span className="landing-badge-prefix">//</span>Benefits
-          </span>
+          <Badge variant="outline" className="w-fit rounded-md border-border px-2.5 py-1 text-muted-foreground font-normal text-sm">
+            <span className="text-muted-foreground">//</span>
+            Benefits
+          </Badge>
           <h2 className="landing-h2">Why Utterance?</h2>
         </div>
         <div className="landing-grid-3">
           {benefits.map((b) => (
-            <div key={b.title} className="landing-card">
-              <div className="landing-card-icon">
-                <b.icon size={24} strokeWidth={1.5} color="white" />
-              </div>
-              <div className="landing-card-text">
-                <h3 className="landing-card-title">{b.title}</h3>
-                <p className="landing-card-desc">{b.description}</p>
-              </div>
-            </div>
+            <Card
+              key={b.title}
+              className="border-none shadow-none gap-0 py-0"
+            >
+              <CardContent className="flex flex-col gap-6 p-5">
+                <div className="landing-card-icon">
+                  <b.icon size={24} strokeWidth={1.5} color="white" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-base font-medium text-white">{b.title}</h3>
+                  <p className="text-base leading-[1.3] text-muted-foreground">
+                    {b.description}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
@@ -117,9 +128,10 @@ export default function HomePage() {
       {/* Quick Start */}
       <section id="quick-start" className="landing-section">
         <div className="landing-section-header">
-          <span className="landing-badge">
-            <span className="landing-badge-prefix">//</span>Quick start
-          </span>
+          <Badge variant="outline" className="w-fit rounded-md border-border px-2.5 py-1 text-muted-foreground font-normal text-sm">
+            <span className="text-muted-foreground">//</span>
+            Quick start
+          </Badge>
           <h2 className="landing-h2">
             Install and start detecting in seconds.
           </h2>
@@ -147,35 +159,37 @@ export default function HomePage() {
 
       {/* CTA */}
       <section className="landing-section" style={{ paddingBottom: 48 }}>
-        <div className="landing-cta-card">
-          <div className="landing-cta-inner">
+        <Card className="w-full h-[360px] border-none shadow-none">
+          <CardContent className="flex-1 flex flex-col justify-center items-start gap-3 p-10">
             <h2 className="landing-h2">Open source. Community driven.</h2>
-            <p className="landing-body" style={{ maxWidth: 360 }}>
+            <p className="text-base leading-[1.3] text-muted-foreground max-w-[360px]">
               MIT licensed. Free forever. Star us on GitHub, join the Discord,
               or open a PR.
             </p>
-            <div className="landing-cta-btns">
-              <a
-                href="https://github.com/nizh0/Utterance"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="landing-btn-primary"
-              >
-                <GitHubIcon size={16} />
-                GitHub
-              </a>
-              <a
-                href="https://discord.gg/kb4zMHNtEV"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="landing-btn-secondary"
-              >
-                <DiscordIcon size={16} />
-                Discord
-              </a>
+            <div className="flex gap-3 mt-3">
+              <Button asChild size="lg">
+                <a
+                  href="https://github.com/nizh0/Utterance"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <GitHubIcon size={16} />
+                  GitHub
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <a
+                  href="https://discord.gg/kb4zMHNtEV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <DiscordIcon size={16} />
+                  Discord
+                </a>
+              </Button>
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </section>
     </>
   );

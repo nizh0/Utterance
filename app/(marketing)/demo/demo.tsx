@@ -2,6 +2,8 @@
 
 import { useCallback, useRef, useState } from "react";
 import { Mic, Square, Settings } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
 
 interface LogEntry {
   id: number;
@@ -127,13 +129,15 @@ export function Demo() {
   return (
     <div className="dash">
       {/* Mobile sidebar toggle */}
-      <button
+      <Button
+        variant="outline"
+        size="sm"
         className="dash-sidebar-toggle"
         onClick={() => setSidebarOpen(!sidebarOpen)}
       >
         <Settings size={14} />
         Controls
-      </button>
+      </Button>
 
       {/* Main event console */}
       <div className="dash-main">
@@ -146,9 +150,14 @@ export function Demo() {
               <span className="dash-entry-count">
                 {entries.filter((e) => e.event !== "system").length} events
               </span>
-              <button className="dash-clear-btn" onClick={handleClear}>
+              <Button
+                variant="outline"
+                size="xs"
+                className="text-xs font-mono"
+                onClick={handleClear}
+              >
                 Clear
-              </button>
+              </Button>
             </div>
           </div>
           <div className="dash-console-body">
@@ -161,9 +170,7 @@ export function Demo() {
             {entries.map((entry) => (
               <div key={entry.id} className="dash-log-entry">
                 <span className="dash-log-time">{entry.timestamp}</span>
-                <span className="dash-log-event">
-                  {entry.event}
-                </span>
+                <span className="dash-log-event">{entry.event}</span>
                 <span className="dash-log-detail">{entry.detail}</span>
               </div>
             ))}
@@ -188,9 +195,11 @@ export function Demo() {
 
         {/* Start / Stop */}
         <div className="dash-section">
-          <button
+          <Button
             onClick={listening ? handleStop : handleStart}
-            className={`dash-btn-action ${listening ? "dash-btn-action--stop" : ""}`}
+            variant={listening ? "destructive" : "default"}
+            className="w-full"
+            size="lg"
           >
             {listening ? (
               <>
@@ -201,7 +210,7 @@ export function Demo() {
                 <Mic size={16} /> Start Listening
               </>
             )}
-          </button>
+          </Button>
         </div>
 
         {/* Configuration */}
@@ -214,14 +223,14 @@ export function Demo() {
                 {sensitivity.toFixed(2)}
               </span>
             </label>
-            <input
-              type="range"
+            <Slider
               min={0}
               max={1}
               step={0.01}
-              value={sensitivity}
-              onChange={(e) => setSensitivity(parseFloat(e.target.value))}
+              value={[sensitivity]}
+              onValueChange={(v) => setSensitivity(v[0])}
               disabled={listening}
+              className="mt-2"
             />
             {listening && (
               <span className="dash-control-hint">Stop to change</span>
@@ -232,14 +241,14 @@ export function Demo() {
               <span>Pause tolerance</span>
               <span className="dash-control-value">{pauseTolerance}ms</span>
             </label>
-            <input
-              type="range"
+            <Slider
               min={200}
               max={5000}
               step={100}
-              value={pauseTolerance}
-              onChange={(e) => setPauseTolerance(parseInt(e.target.value))}
+              value={[pauseTolerance]}
+              onValueChange={(v) => setPauseTolerance(v[0])}
               disabled={listening}
+              className="mt-2"
             />
             {listening && (
               <span className="dash-control-hint">Stop to change</span>

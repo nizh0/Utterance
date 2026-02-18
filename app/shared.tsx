@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mic, Code2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function DiscordIcon({ size = 16 }: { size?: number }) {
   return (
@@ -82,14 +83,15 @@ export function NavBar({
           ))}
         </div>
         <div className="landing-nav-cta">
-          <a
-            href="https://github.com/nizh0/Utterance"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="landing-btn-sm"
-          >
-            <GitHubIcon size={16} />
-          </a>
+          <Button asChild variant="ghost" size="icon" className="rounded-full text-muted-foreground hover:text-white">
+            <a
+              href="https://github.com/nizh0/Utterance"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GitHubIcon size={16} />
+            </a>
+          </Button>
         </div>
       </div>
     </nav>

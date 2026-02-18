@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 /* ============================================
    Landing page — exact match to Framer design
@@ -163,49 +167,7 @@ html {
   padding: 8px 8px 8px 16px;
 }
 
-/* ----- Buttons ----- */
-.landing-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 40px;
-  padding: 0 12px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.3em;
-  color: rgb(15, 15, 15);
-  background-color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: opacity 0.15s;
-}
-
-.landing-btn-primary:hover {
-  opacity: 0.85;
-}
-
-.landing-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 40px;
-  padding: 0 12px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.3em;
-  color: #fff;
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.15s;
-}
-
-.landing-btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-}
+/* Buttons & Cards are now handled by shadcn/ui components */
 
 /* ----- Sections ----- */
 .landing-section {
@@ -224,19 +186,6 @@ html {
   max-width: 600px;
 }
 
-.landing-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  line-height: 1.3em;
-  color: rgb(133, 133, 133);
-}
-
-.landing-badge-prefix {
-  color: rgb(133, 133, 133);
-}
-
 .landing-h2 {
   font-family: var(--font-inter-display), var(--font-inter), sans-serif;
   font-size: 36px;
@@ -244,12 +193,6 @@ html {
   line-height: 1.1em;
   letter-spacing: -0.03em;
   color: #fff;
-}
-
-.landing-body {
-  font-size: 16px;
-  line-height: 1.3em;
-  color: rgb(133, 133, 133);
 }
 
 /* ----- Benefits grid ----- */
@@ -261,15 +204,6 @@ html {
   margin-top: 40px;
 }
 
-.landing-card {
-  background-color: rgb(23, 22, 21);
-  border-radius: 8px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
 .landing-card-icon {
   width: 64px;
   height: 64px;
@@ -278,25 +212,6 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.landing-card-text {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.landing-card-title {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.3em;
-  color: #fff;
-}
-
-.landing-card-desc {
-  font-size: 16px;
-  line-height: 1.3em;
-  color: rgb(133, 133, 133);
 }
 
 /* ----- Quick Start ----- */
@@ -415,33 +330,6 @@ html {
   color: #e5c07b;
 }
 
-/* ----- CTA ----- */
-.landing-cta-card {
-  width: 100%;
-  height: 360px;
-  background-color: rgb(23, 22, 21);
-  border-radius: 12px;
-  padding: 16px;
-  display: flex;
-  align-items: stretch;
-}
-
-.landing-cta-inner {
-  flex: 1;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.landing-cta-btns {
-  display: flex;
-  gap: 12px;
-  margin-top: 12px;
-}
-
 /* ----- Footer ----- */
 .landing-footer {
   background-color: rgb(23, 22, 21);
@@ -462,12 +350,6 @@ html {
   flex-direction: column;
   gap: 16px;
   max-width: 280px;
-}
-
-.landing-footer-desc {
-  font-size: 14px;
-  line-height: 1.3em;
-  color: rgb(133, 133, 133);
 }
 
 .landing-footer-nav {
@@ -594,35 +476,7 @@ html {
   50% { opacity: 0.3; }
 }
 
-/* Action button */
-.dash-btn-action {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 40px;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgb(15, 15, 15);
-  background-color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: opacity 0.15s;
-  font-family: var(--font-inter), sans-serif;
-}
-
-.dash-btn-action:hover {
-  opacity: 0.85;
-}
-
-.dash-btn-action--stop {
-  color: #fff;
-  background-color: #ff5f57;
-}
-
-/* Slider controls */
+/* Slider controls (labels, hints — slider itself is shadcn) */
 .dash-control {
   margin-bottom: 14px;
 }
@@ -651,41 +505,6 @@ html {
   color: rgb(90, 90, 90);
   margin-top: 4px;
   font-style: italic;
-}
-
-.dash-control input[type="range"] {
-  width: 100%;
-  height: 4px;
-  -webkit-appearance: none;
-  appearance: none;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
-  outline: none;
-}
-
-.dash-control input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  cursor: pointer;
-  transition: transform 0.1s;
-}
-
-.dash-control input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-}
-
-.dash-control input[type="range"]:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-.dash-control input[type="range"]:disabled::-webkit-slider-thumb {
-  cursor: not-allowed;
-  transform: none;
 }
 
 /* Legend */
@@ -778,23 +597,6 @@ html {
   font-family: var(--font-jetbrains), "JetBrains Mono", monospace;
 }
 
-.dash-clear-btn {
-  font-size: 12px;
-  color: rgb(133, 133, 133);
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  padding: 2px 8px;
-  cursor: pointer;
-  font-family: var(--font-jetbrains), "JetBrains Mono", monospace;
-  transition: color 0.15s, border-color 0.15s;
-}
-
-.dash-clear-btn:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
 .dash-console-body {
   flex: 1;
   overflow-y: auto;
@@ -873,7 +675,7 @@ html {
 
 /* Mobile sidebar toggle (hidden on desktop) */
 .dash-sidebar-toggle {
-  display: none;
+  display: none !important;
 }
 
 /* ----- Responsive ----- */
@@ -892,10 +694,6 @@ html {
 
   .landing-hero {
     padding-top: 120px;
-  }
-
-  .landing-cta-card {
-    height: auto;
   }
 
   .landing-footer-inner {
@@ -924,26 +722,10 @@ html {
   }
 
   .dash-sidebar-toggle {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    color: rgb(133, 133, 133);
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-family: var(--font-jetbrains), "JetBrains Mono", monospace;
+    display: flex !important;
     align-self: flex-end;
     margin-bottom: 4px;
-    transition: color 0.15s;
   }
-
-  .dash-sidebar-toggle:hover {
-    color: #fff;
-  }
-
 }
 
 @media (max-width: 480px) {
@@ -980,10 +762,6 @@ html {
     padding: 120px 16px 48px;
   }
 
-  .landing-cta-inner {
-    padding: 24px;
-  }
-
   .landing-footer {
     padding: 24px;
   }
@@ -999,5 +777,88 @@ html {
 
   .dash-log-event {
     min-width: auto;
+  }
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.5rem;
+  /* Dark-first design — matches rgb(10, 9, 8) base */
+  --background: rgb(10, 9, 8);
+  --foreground: #fff;
+  --card: rgb(23, 22, 21);
+  --card-foreground: #fff;
+  --popover: rgb(23, 22, 21);
+  --popover-foreground: #fff;
+  --primary: #fff;
+  --primary-foreground: rgb(15, 15, 15);
+  --secondary: rgba(255, 255, 255, 0.08);
+  --secondary-foreground: #fff;
+  --muted: rgb(23, 22, 21);
+  --muted-foreground: rgb(133, 133, 133);
+  --accent: rgba(255, 255, 255, 0.08);
+  --accent-foreground: #fff;
+  --destructive: #ff5f57;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: rgba(255, 255, 255, 0.2);
+  --chart-1: #28c840;
+  --chart-2: #febc2e;
+  --chart-3: #61afef;
+  --chart-4: #ff5f57;
+  --chart-5: #c678dd;
+  --sidebar: transparent;
+  --sidebar-foreground: #fff;
+  --sidebar-primary: #fff;
+  --sidebar-primary-foreground: rgb(15, 15, 15);
+  --sidebar-accent: rgba(255, 255, 255, 0.08);
+  --sidebar-accent-foreground: #fff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: rgba(255, 255, 255, 0.2);
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
 }
