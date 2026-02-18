@@ -373,6 +373,48 @@ html {
   font-family: var(--font-jetbrains), "JetBrains Mono", "Consolas", monospace;
 }
 
+/* ----- Syntax highlighting ----- */
+.syn-keyword {
+  color: #c678dd;
+}
+
+.syn-string {
+  color: #98c379;
+}
+
+.syn-function {
+  color: #61afef;
+}
+
+.syn-comment {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.syn-number {
+  color: #d19a66;
+}
+
+.syn-operator {
+  color: #56b6c2;
+}
+
+.syn-punctuation {
+  color: #abb2bf;
+}
+
+.syn-bracket {
+  color: #abb2bf;
+}
+
+.syn-ident {
+  color: #e5c07b;
+}
+
+.syn-builtin {
+  color: #e5c07b;
+}
+
 /* ----- CTA ----- */
 .landing-cta-card {
   width: 100%;

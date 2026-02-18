@@ -24,6 +24,7 @@ function GitHubIcon({ size = 16 }: { size?: number }) {
 }
 import { CopyButton } from "./copy-button";
 import { WaveBackground } from "./wave-background";
+import { SyntaxHighlight } from "./syntax-highlight";
 
 function Logo() {
   return (
@@ -215,7 +216,7 @@ export default function HomePage() {
               <span className="landing-code-filename">index.ts</span>
             </div>
             <pre className="landing-code-pre">
-              <code>{codeSnippet}</code>
+              <SyntaxHighlight code={codeSnippet} />
             </pre>
           </div>
         </div>
