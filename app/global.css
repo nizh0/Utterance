@@ -6,11 +6,19 @@
    Landing page — exact match to Framer design
    ============================================ */
 
+html {
+  scroll-behavior: smooth;
+}
+
 .landing-root {
   background-color: rgb(10, 9, 8);
   color: #fff;
   font-family: var(--font-inter), sans-serif;
   min-height: 100vh;
+}
+
+.landing-section[id] {
+  scroll-margin-top: 80px;
 }
 
 /* ----- NavBar ----- */
@@ -76,20 +84,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  height: 32px;
-  padding: 0 8px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  color: rgb(133, 133, 133);
+  background-color: transparent;
+  border-radius: 50%;
   text-decoration: none;
-  transition: background-color 0.15s;
+  transition: color 0.15s;
 }
 
 .landing-btn-sm:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
 }
 
 /* ----- Hero ----- */
@@ -112,7 +117,7 @@
 .landing-h1 {
   font-family: var(--font-inter-display), var(--font-inter), sans-serif;
   font-size: 56px;
-  font-weight: 600;
+  font-weight: 300;
   line-height: 1em;
   letter-spacing: -0.03em;
   color: #fff;
@@ -208,7 +213,7 @@
 .landing-h2 {
   font-family: var(--font-inter-display), var(--font-inter), sans-serif;
   font-size: 36px;
-  font-weight: 600;
+  font-weight: 300;
   line-height: 1.1em;
   letter-spacing: -0.03em;
   color: #fff;
@@ -308,8 +313,8 @@
 }
 
 .landing-code-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
 }
 

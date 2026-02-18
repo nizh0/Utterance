@@ -8,6 +8,11 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const interDisplay = localFont({
   src: [
     {
+      path: "../public/fonts/InterDisplay-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
       path: "../public/fonts/InterDisplay-Medium.woff2",
       weight: "500",
       style: "normal",
