@@ -1,4 +1,5 @@
 import { RootProvider } from "fumadocs-ui/provider/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import type { Metadata, Viewport } from "next";
@@ -192,6 +193,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           {children}
         </RootProvider>
       </body>
+      <GoogleAnalytics gaId="G-7TC9T5FJQ5" />
     </html>
   );
 }
