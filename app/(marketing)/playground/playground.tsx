@@ -42,9 +42,7 @@ export function Playground() {
   });
   const [settingsOpen, setSettingsOpen] = useState(false);
 
-  const detectorRef = useRef<import("../../../src/utterance").Utterance | null>(
-    null
-  );
+  const detectorRef = useRef<import("@utterance/core").Utterance | null>(null);
   const idRef = useRef(0);
   const logEndRef = useRef<HTMLDivElement>(null);
   const settingsRef = useRef<HTMLDivElement>(null);
@@ -80,7 +78,7 @@ export function Playground() {
   }, []);
 
   const handleStart = useCallback(async () => {
-    const { Utterance } = await import("../../../src/utterance");
+    const { Utterance } = await import("@utterance/core");
 
     const detector = new Utterance({
       sensitivity,
