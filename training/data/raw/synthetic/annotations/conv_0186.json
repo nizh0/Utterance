@@ -1,0 +1,95 @@
+{
+  "id": "conv_0186",
+  "duration": 46.751164573498194,
+  "sample_rate": 16000,
+  "speakers": {
+    "A": "6313",
+    "B": "3576"
+  },
+  "annotations": [
+    {
+      "start": 0.0,
+      "end": 7.515,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 7.515,
+      "end": 8.542553586275394,
+      "label": "turn_complete",
+      "speaker": "A"
+    },
+    {
+      "start": 8.042553586275394,
+      "end": 10.552553586275394,
+      "label": "interrupt_intent",
+      "speaker": "B"
+    },
+    {
+      "start": 10.552553586275394,
+      "end": 12.402553586275394,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 12.402553586275394,
+      "end": 12.834303586275393,
+      "label": "thinking_pause",
+      "speaker": "A"
+    },
+    {
+      "start": 12.834303586275393,
+      "end": 14.684303586275393,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 14.684303586275393,
+      "end": 16.306155989497654,
+      "label": "turn_complete",
+      "speaker": "A"
+    },
+    {
+      "start": 16.306155989497654,
+      "end": 30.791155989497653,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 30.791155989497653,
+      "end": 31.310646012505348,
+      "label": "turn_complete",
+      "speaker": "B"
+    },
+    {
+      "start": 31.310646012505348,
+      "end": 35.60064601250535,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 35.60064601250535,
+      "end": 36.596546843716816,
+      "label": "turn_complete",
+      "speaker": "A"
+    },
+    {
+      "start": 36.596546843716816,
+      "end": 40.456546843716815,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 40.456546843716815,
+      "end": 42.17435207349819,
+      "label": "turn_complete",
+      "speaker": "B"
+    },
+    {
+      "start": 41.696131261333136,
+      "end": 46.751131261333136,
+      "label": "interrupt_intent",
+      "speaker": "A"
+    }
+  ]
+}

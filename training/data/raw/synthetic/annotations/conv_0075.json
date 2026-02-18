@@ -1,0 +1,107 @@
+{
+  "id": "conv_0075",
+  "duration": 40.09320330130754,
+  "sample_rate": 16000,
+  "speakers": {
+    "A": "1462",
+    "B": "174"
+  },
+  "annotations": [
+    {
+      "start": 0.0,
+      "end": 4.92,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 4.92,
+      "end": 5.1319181762674155,
+      "label": "turn_complete",
+      "speaker": "A"
+    },
+    {
+      "start": 5.1319181762674155,
+      "end": 7.396918176267416,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 7.396918176267416,
+      "end": 7.9401681762674166,
+      "label": "thinking_pause",
+      "speaker": "B"
+    },
+    {
+      "start": 7.9401681762674166,
+      "end": 10.205168176267417,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 10.205168176267417,
+      "end": 10.946050645144796,
+      "label": "turn_complete",
+      "speaker": "B"
+    },
+    {
+      "start": 10.547414453606283,
+      "end": 16.73241445360628,
+      "label": "interrupt_intent",
+      "speaker": "A"
+    },
+    {
+      "start": 16.732425645144794,
+      "end": 20.454925645144794,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 20.454925645144794,
+      "end": 21.623738145144795,
+      "label": "thinking_pause",
+      "speaker": "B"
+    },
+    {
+      "start": 21.623738145144795,
+      "end": 25.346238145144795,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 25.346238145144795,
+      "end": 27.291608013478026,
+      "label": "turn_complete",
+      "speaker": "B"
+    },
+    {
+      "start": 27.291608013478026,
+      "end": 30.846608013478026,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 30.846608013478026,
+      "end": 31.002890801307537,
+      "label": "turn_complete",
+      "speaker": "A"
+    },
+    {
+      "start": 31.002890801307537,
+      "end": 35.00289080130754,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 35.00289080130754,
+      "end": 36.09320330130754,
+      "label": "thinking_pause",
+      "speaker": "B"
+    },
+    {
+      "start": 36.09320330130754,
+      "end": 40.09320330130754,
+      "label": "speaking",
+      "speaker": "B"
+    }
+  ]
+}

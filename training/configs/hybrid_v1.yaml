@@ -1,0 +1,69 @@
+# Utterance Model Configuration — Hybrid Conv + Attention (v1)
+#
+# Architecture: 1D conv blocks for local pattern extraction +
+# single multi-head self-attention layer for temporal context.
+#
+# Target: <5MB ONNX (int8 quantized), <100ms inference in WASM on mobile.
+# Context window: 1 second (100 frames at 10ms hop).
+
+model:
+  architecture: hybrid_conv_attention
+  input_dim: 17            # 13 MFCCs + energy + pitch + speech_rate + pause_duration
+  context_frames: 100      # 1 second at 10ms hop
+  num_classes: 4            # speaking, thinking_pause, turn_complete, interrupt_intent
+
+  # 1D Convolution blocks
+  conv:
+    channels: [32, 64, 64]  # 3 conv blocks with increasing channels
+    kernel_sizes: [5, 3, 3]
+    use_batchnorm: true
+    activation: relu
+    dropout: 0.1
+
+  # Single attention layer for temporal context
+  attention:
+    hidden_dim: 64
+    num_heads: 4
+    dropout: 0.1
+
+  # Classification head
+  head:
+    pooling: global_average  # pool over temporal dim before linear
+    dropout: 0.2
+
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  epochs: 50
+  optimizer: adamw
+  weight_decay: 0.01
+  scheduler: cosine
+  warmup_epochs: 3
+  early_stopping_patience: 5
+  class_weights: auto       # compute from label distribution (thinking_pause/interrupt are rarer)
+
+data:
+  dataset: switchboard       # real conversational data
+  sample_rate: 16000
+  frame_length_ms: 25
+  frame_shift_ms: 10
+  num_mfcc: 13
+  context_window_ms: 1000   # 1 second window fed to model
+  noise_augmentation_std: 0.015  # Gaussian noise for Python↔JS feature drift robustness
+  train_split: 0.8
+  stratified: true
+
+inference:
+  batch_interval_ms: 100    # run inference every 100ms
+  execution_provider: wasm   # default; webgpu opt-in
+  quantization: int8         # optimal for WASM SIMD
+
+labels:
+  - speaking
+  - thinking_pause
+  - turn_complete
+  - interrupt_intent
+
+evaluation:
+  target_accuracy: 0.85      # 85% per-class minimum
+  test_set: hand_labeled     # 10-20 real conversational clips

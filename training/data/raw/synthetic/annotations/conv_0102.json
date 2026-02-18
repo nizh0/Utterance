@@ -1,0 +1,95 @@
+{
+  "id": "conv_0102",
+  "duration": 52.61156690105507,
+  "sample_rate": 16000,
+  "speakers": {
+    "A": "777",
+    "B": "174"
+  },
+  "annotations": [
+    {
+      "start": 0.0,
+      "end": 12.535,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 12.535,
+      "end": 13.866428378589642,
+      "label": "turn_complete",
+      "speaker": "A"
+    },
+    {
+      "start": 13.866428378589642,
+      "end": 16.046428378589642,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 16.046428378589642,
+      "end": 16.895678378589643,
+      "label": "thinking_pause",
+      "speaker": "B"
+    },
+    {
+      "start": 16.895678378589643,
+      "end": 19.075678378589643,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 19.075678378589643,
+      "end": 20.510997933053762,
+      "label": "turn_complete",
+      "speaker": "B"
+    },
+    {
+      "start": 20.510997933053762,
+      "end": 25.075997933053763,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 25.075997933053763,
+      "end": 26.616308637433843,
+      "label": "turn_complete",
+      "speaker": "A"
+    },
+    {
+      "start": 26.14327338854709,
+      "end": 30.71327338854709,
+      "label": "interrupt_intent",
+      "speaker": "B"
+    },
+    {
+      "start": 30.713308637433844,
+      "end": 36.153308637433845,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 36.153308637433845,
+      "end": 37.323566901055074,
+      "label": "turn_complete",
+      "speaker": "A"
+    },
+    {
+      "start": 37.323566901055074,
+      "end": 44.77856690105507,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 44.77856690105507,
+      "end": 45.15656690105507,
+      "label": "thinking_pause",
+      "speaker": "B"
+    },
+    {
+      "start": 45.15656690105507,
+      "end": 52.61156690105507,
+      "label": "speaking",
+      "speaker": "B"
+    }
+  ]
+}

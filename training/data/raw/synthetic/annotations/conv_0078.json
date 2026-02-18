@@ -1,0 +1,65 @@
+{
+  "id": "conv_0078",
+  "duration": 49.60903461796894,
+  "sample_rate": 16000,
+  "speakers": {
+    "A": "84",
+    "B": "3000"
+  },
+  "annotations": [
+    {
+      "start": 0.0,
+      "end": 4.2225,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 4.2225,
+      "end": 4.9104375000000005,
+      "label": "thinking_pause",
+      "speaker": "A"
+    },
+    {
+      "start": 4.9104375000000005,
+      "end": 9.1329375,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 9.1329375,
+      "end": 9.68678582901104,
+      "label": "turn_complete",
+      "speaker": "A"
+    },
+    {
+      "start": 9.68678582901104,
+      "end": 23.97178582901104,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 23.97178582901104,
+      "end": 25.165973329011038,
+      "label": "thinking_pause",
+      "speaker": "B"
+    },
+    {
+      "start": 25.165973329011038,
+      "end": 39.450973329011035,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 39.450973329011035,
+      "end": 41.38903461796894,
+      "label": "turn_complete",
+      "speaker": "B"
+    },
+    {
+      "start": 41.38903461796894,
+      "end": 49.60903461796894,
+      "label": "speaking",
+      "speaker": "A"
+    }
+  ]
+}

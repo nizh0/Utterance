@@ -1,0 +1,101 @@
+{
+  "id": "conv_0103",
+  "duration": 77.96730172222287,
+  "sample_rate": 16000,
+  "speakers": {
+    "A": "2078",
+    "B": "84"
+  },
+  "annotations": [
+    {
+      "start": 0.0,
+      "end": 10.5024375,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 10.5024375,
+      "end": 11.2516875,
+      "label": "thinking_pause",
+      "speaker": "A"
+    },
+    {
+      "start": 11.2516875,
+      "end": 21.7541875,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 21.7541875,
+      "end": 23.18376658406946,
+      "label": "turn_complete",
+      "speaker": "A"
+    },
+    {
+      "start": 23.18376658406946,
+      "end": 31.15876658406946,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 31.15876658406946,
+      "end": 31.406310358493336,
+      "label": "turn_complete",
+      "speaker": "B"
+    },
+    {
+      "start": 31.406310358493336,
+      "end": 34.913810358493336,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 34.913810358493336,
+      "end": 35.755560358493334,
+      "label": "thinking_pause",
+      "speaker": "A"
+    },
+    {
+      "start": 35.755560358493334,
+      "end": 39.263060358493334,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 39.263060358493334,
+      "end": 40.86933306443992,
+      "label": "turn_complete",
+      "speaker": "A"
+    },
+    {
+      "start": 40.86933306443992,
+      "end": 54.55933306443992,
+      "label": "speaking",
+      "speaker": "B"
+    },
+    {
+      "start": 54.55933306443992,
+      "end": 55.832864222222874,
+      "label": "turn_complete",
+      "speaker": "B"
+    },
+    {
+      "start": 55.832864222222874,
+      "end": 66.33530172222288,
+      "label": "speaking",
+      "speaker": "A"
+    },
+    {
+      "start": 66.33530172222288,
+      "end": 67.46480172222287,
+      "label": "thinking_pause",
+      "speaker": "A"
+    },
+    {
+      "start": 67.46480172222287,
+      "end": 77.96730172222287,
+      "label": "speaking",
+      "speaker": "A"
+    }
+  ]
+}

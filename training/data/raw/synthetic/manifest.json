@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "conv_0000",
+    "audio": "audio/conv_0000.wav",
+    "annotations": "annotations/conv_0000.json",
+    "duration": 26.72628518835725
+  },
+  {
+    "id": "conv_0001",
+    "audio": "audio/conv_0001.wav",
+    "annotations": "annotations/conv_0001.json",
+    "duration": 24.86956208571448
+  },
+  {
+    "id": "conv_0002",
+    "audio": "audio/conv_0002.wav",
+    "annotations": "annotations/conv_0002.json",
+    "duration": 28.80208132435516
+  },
+  {
+    "id": "conv_0003",
+    "audio": "audio/conv_0003.wav",
+    "annotations": "annotations/conv_0003.json",
+    "duration": 43.81823877547698
+  },
+  {
+    "id": "conv_0004",
+    "audio": "audio/conv_0004.wav",
+    "annotations": "annotations/conv_0004.json",
+    "duration": 62.69532874468102
+  },
+  {
+    "id": "conv_0005",
+    "audio": "audio/conv_0005.wav",
+    "annotations": "annotations/conv_0005.json",
+    "duration": 20.094992190352638
+  },
+  {
+    "id": "conv_0006",
+    "audio": "audio/conv_0006.wav",
+    "annotations": "annotations/conv_0006.json",
+    "duration": 41.81414121568505
+  },
+  {
+    "id": "conv_0007",
+    "audio": "audio/conv_0007.wav",
+    "annotations": "annotations/conv_0007.json",
+    "duration": 24.305563279551407
+  },
+  {
+    "id": "conv_0008",
+    "audio": "audio/conv_0008.wav",
+    "annotations": "annotations/conv_0008.json",
+    "duration": 63.02564159279973
+  },
+  {
+    "id": "conv_0009",
+    "audio": "audio/conv_0009.wav",
+    "annotations": "annotations/conv_0009.json",
+    "duration": 37.12169420458869
+  },
+  {
+    "id": "conv_0010",
+    "audio": "audio/conv_0010.wav",
+    "annotations": "annotations/conv_0010.json",
+    "duration": 58.85531754310228
+  },
+  {
+    "id": "conv_0011",
+    "audio": "audio/conv_0011.wav",
+    "annotations": "annotations/conv_0011.json",
+    "duration": 44.24861558221829
+  },
+  {
+    "id": "conv_0012",
+    "audio": "audio/conv_0012.wav",
+    "annotations": "annotations/conv_0012.json",
+    "duration": 19.985374289273395
+  },
+  {
+    "id": "conv_0013",
+    "audio": "audio/conv_0013.wav",
+    "annotations": "annotations/conv_0013.json",
+    "duration": 68.02270166191114
+  },
+  {
+    "id": "conv_0014",
+    "audio": "audio/conv_0014.wav",
+    "annotations": "annotations/conv_0014.json",
+    "duration": 34.53449718023654
+  },
+  {
+    "id": "conv_0015",
+    "audio": "audio/conv_0015.wav",
+    "annotations": "annotations/conv_0015.json",
+    "duration": 41.00736104588957
+  },
+  {
+    "id": "conv_0016",
+    "audio": "audio/conv_0016.wav",
+    "annotations": "annotations/conv_0016.json",
+    "duration": 28.62113764973433
+  },
+  {
+    "id": "conv_0017",
+    "audio": "audio/conv_0017.wav",
+    "annotations": "annotations/conv_0017.json",
+    "duration": 28.7557475232866
+  },
+  {
+    "id": "conv_0018",
+    "audio": "audio/conv_0018.wav",
+    "annotations": "annotations/conv_0018.json",
+    "duration": 65.67064970330803
+  },
+  {
+    "id": "conv_0019",
+    "audio": "audio/conv_0019.wav",
+    "annotations": "annotations/conv_0019.json",
+    "duration": 57.56547775747448
+  },
+  {
+    "id": "conv_0020",
+    "audio": "audio/conv_0020.wav",
+    "annotations": "annotations/conv_0020.json",
+    "duration": 54.68117398562772
+  },
+  {
+    "id": "conv_0021",
+    "audio": "audio/conv_0021.wav",
+    "annotations": "annotations/conv_0021.json",
+    "duration": 36.16916189123955
+  },
+  {
+    "id": "conv_0022",
+    "audio": "audio/conv_0022.wav",
+    "annotations": "annotations/conv_0022.json",
+    "duration": 85.63074693846623
+  },
+  {
+    "id": "conv_0023",
+    "audio": "audio/conv_0023.wav",
+    "annotations": "annotations/conv_0023.json",
+    "duration": 57.43910657495052
+  },
+  {
+    "id": "conv_0024",
+    "audio": "audio/conv_0024.wav",
+    "annotations": "annotations/conv_0024.json",
+    "duration": 27.336420943654286
+  },
+  {
+    "id": "conv_0025",
+    "audio": "audio/conv_0025.wav",
+    "annotations": "annotations/conv_0025.json",
+    "duration": 12.442581508736296
+  },
+  {
+    "id": "conv_0026",
+    "audio": "audio/conv_0026.wav",
+    "annotations": "annotations/conv_0026.json",
+    "duration": 57.30168561491126
+  },
+  {
+    "id": "conv_0027",
+    "audio": "audio/conv_0027.wav",
+    "annotations": "annotations/conv_0027.json",
+    "duration": 42.57298434376781
+  },
+  {
+    "id": "conv_0028",
+    "audio": "audio/conv_0028.wav",
+    "annotations": "annotations/conv_0028.json",
+    "duration": 43.0799922760366
+  },
+  {
+    "id": "conv_0029",
+    "audio": "audio/conv_0029.wav",
+    "annotations": "annotations/conv_0029.json",
+    "duration": 72.0745896390558
+  },
+  {
+    "id": "conv_0030",
+    "audio": "audio/conv_0030.wav",
+    "annotations": "annotations/conv_0030.json",
+    "duration": 32.02124726423389
+  },
+  {
+    "id": "conv_0031",
+    "audio": "audio/conv_0031.wav",
+    "annotations": "annotations/conv_0031.json",
+    "duration": 29.64338446071986
+  },
+  {
+    "id": "conv_0032",
+    "audio": "audio/conv_0032.wav",
+    "annotations": "annotations/conv_0032.json",
+    "duration": 26.044680578979133
+  },
+  {
+    "id": "conv_0033",
+    "audio": "audio/conv_0033.wav",
+    "annotations": "annotations/conv_0033.json",
+    "duration": 67.9904714395537
+  },
+  {
+    "id": "conv_0034",
+    "audio": "audio/conv_0034.wav",
+    "annotations": "annotations/conv_0034.json",
+    "duration": 30.42259806808132
+  },
+  {
+    "id": "conv_0035",
+    "audio": "audio/conv_0035.wav",
+    "annotations": "annotations/conv_0035.json",
+    "duration": 69.46551552410176
+  },
+  {
+    "id": "conv_0036",
+    "audio": "audio/conv_0036.wav",
+    "annotations": "annotations/conv_0036.json",
+    "duration": 75.43590134676434
+  },
+  {
+    "id": "conv_0037",
+    "audio": "audio/conv_0037.wav",
+    "annotations": "annotations/conv_0037.json",
+    "duration": 44.88859358853294
+  },
+  {
+    "id": "conv_0038",
+    "audio": "audio/conv_0038.wav",
+    "annotations": "annotations/conv_0038.json",
+    "duration": 37.634953335227024
+  },
+  {
+    "id": "conv_0039",
+    "audio": "audio/conv_0039.wav",
+    "annotations": "annotations/conv_0039.json",
+    "duration": 19.32775238052187
+  },
+  {
+    "id": "conv_0040",
+    "audio": "audio/conv_0040.wav",
+    "annotations": "annotations/conv_0040.json",
+    "duration": 50.560660213829124
+  },
+  {
+    "id": "conv_0041",
+    "audio": "audio/conv_0041.wav",
+    "annotations": "annotations/conv_0041.json",
+    "duration": 35.1935304234511
+  },
+  {
+    "id": "conv_0042",
+    "audio": "audio/conv_0042.wav",
+    "annotations": "annotations/conv_0042.json",
+    "duration": 40.838411947692094
+  },
+  {
+    "id": "conv_0043",
+    "audio": "audio/conv_0043.wav",
+    "annotations": "annotations/conv_0043.json",
+    "duration": 47.97785768866192
+  },
+  {
+    "id": "conv_0044",
+    "audio": "audio/conv_0044.wav",
+    "annotations": "annotations/conv_0044.json",
+    "duration": 66.19889117448815
+  },
+  {
+    "id": "conv_0045",
+    "audio": "audio/conv_0045.wav",
+    "annotations": "annotations/conv_0045.json",
+    "duration": 64.66083884978784
+  },
+  {
+    "id": "conv_0046",
+    "audio": "audio/conv_0046.wav",
+    "annotations": "annotations/conv_0046.json",
+    "duration": 41.98738827999576
+  },
+  {
+    "id": "conv_0047",
+    "audio": "audio/conv_0047.wav",
+    "annotations": "annotations/conv_0047.json",
+    "duration": 39.014742255282826
+  },
+  {
+    "id": "conv_0048",
+    "audio": "audio/conv_0048.wav",
+    "annotations": "annotations/conv_0048.json",
+    "duration": 31.240051089165608
+  },
+  {
+    "id": "conv_0049",
+    "audio": "audio/conv_0049.wav",
+    "annotations": "annotations/conv_0049.json",
+    "duration": 44.33048945472885
+  },
+  {
+    "id": "conv_0050",
+    "audio": "audio/conv_0050.wav",
+    "annotations": "annotations/conv_0050.json",
+    "duration": 38.23805359282947
+  },
+  {
+    "id": "conv_0051",
+    "audio": "audio/conv_0051.wav",
+    "annotations": "annotations/conv_0051.json",
+    "duration": 28.2812097065396
+  },
+  {
+    "id": "conv_0052",
+    "audio": "audio/conv_0052.wav",
+    "annotations": "annotations/conv_0052.json",
+    "duration": 35.79005626388571
+  },
+  {
+    "id": "conv_0053",
+    "audio": "audio/conv_0053.wav",
+    "annotations": "annotations/conv_0053.json",
+    "duration": 58.99163431792717
+  },
+  {
+    "id": "conv_0054",
+    "audio": "audio/conv_0054.wav",
+    "annotations": "annotations/conv_0054.json",
+    "duration": 25.329177336057956
+  },
+  {
+    "id": "conv_0055",
+    "audio": "audio/conv_0055.wav",
+    "annotations": "annotations/conv_0055.json",
+    "duration": 50.704047443493145
+  },
+  {
+    "id": "conv_0056",
+    "audio": "audio/conv_0056.wav",
+    "annotations": "annotations/conv_0056.json",
+    "duration": 70.2287694681187
+  },
+  {
+    "id": "conv_0057",
+    "audio": "audio/conv_0057.wav",
+    "annotations": "annotations/conv_0057.json",
+    "duration": 21.532039571863475
+  },
+  {
+    "id": "conv_0058",
+    "audio": "audio/conv_0058.wav",
+    "annotations": "annotations/conv_0058.json",
+    "duration": 27.85427200282674
+  },
+  {
+    "id": "conv_0059",
+    "audio": "audio/conv_0059.wav",
+    "annotations": "annotations/conv_0059.json",
+    "duration": 11.004004113167843
+  },
+  {
+    "id": "conv_0060",
+    "audio": "audio/conv_0060.wav",
+    "annotations": "annotations/conv_0060.json",
+    "duration": 15.346235380237056
+  },
+  {
+    "id": "conv_0061",
+    "audio": "audio/conv_0061.wav",
+    "annotations": "annotations/conv_0061.json",
+    "duration": 24.909187201472765
+  },
+  {
+    "id": "conv_0062",
+    "audio": "audio/conv_0062.wav",
+    "annotations": "annotations/conv_0062.json",
+    "duration": 56.77304909779385
+  },
+  {
+    "id": "conv_0063",
+    "audio": "audio/conv_0063.wav",
+    "annotations": "annotations/conv_0063.json",
+    "duration": 59.807370398876145
+  },
+  {
+    "id": "conv_0064",
+    "audio": "audio/conv_0064.wav",
+    "annotations": "annotations/conv_0064.json",
+    "duration": 36.33095409657718
+  },
+  {
+    "id": "conv_0065",
+    "audio": "audio/conv_0065.wav",
+    "annotations": "annotations/conv_0065.json",
+    "duration": 25.079452094211916
+  },
+  {
+    "id": "conv_0066",
+    "audio": "audio/conv_0066.wav",
+    "annotations": "annotations/conv_0066.json",
+    "duration": 45.09739022833735
+  },
+  {
+    "id": "conv_0067",
+    "audio": "audio/conv_0067.wav",
+    "annotations": "annotations/conv_0067.json",
+    "duration": 42.7241049327787
+  },
+  {
+    "id": "conv_0068",
+    "audio": "audio/conv_0068.wav",
+    "annotations": "annotations/conv_0068.json",
+    "duration": 22.835320642800518
+  },
+  {
+    "id": "conv_0069",
+    "audio": "audio/conv_0069.wav",
+    "annotations": "annotations/conv_0069.json",
+    "duration": 49.72916505850477
+  },
+  {
+    "id": "conv_0070",
+    "audio": "audio/conv_0070.wav",
+    "annotations": "annotations/conv_0070.json",
+    "duration": 28.85523715391378
+  },
+  {
+    "id": "conv_0071",
+    "audio": "audio/conv_0071.wav",
+    "annotations": "annotations/conv_0071.json",
+    "duration": 35.025730105742845
+  },
+  {
+    "id": "conv_0072",
+    "audio": "audio/conv_0072.wav",
+    "annotations": "annotations/conv_0072.json",
+    "duration": 35.12797065328356
+  },
+  {
+    "id": "conv_0073",
+    "audio": "audio/conv_0073.wav",
+    "annotations": "annotations/conv_0073.json",
+    "duration": 38.408851564236116
+  },
+  {
+    "id": "conv_0074",
+    "audio": "audio/conv_0074.wav",
+    "annotations": "annotations/conv_0074.json",
+    "duration": 42.211005936336164
+  },
+  {
+    "id": "conv_0075",
+    "audio": "audio/conv_0075.wav",
+    "annotations": "annotations/conv_0075.json",
+    "duration": 40.09320330130754
+  },
+  {
+    "id": "conv_0076",
+    "audio": "audio/conv_0076.wav",
+    "annotations": "annotations/conv_0076.json",
+    "duration": 18.90152986812929
+  },
+  {
+    "id": "conv_0077",
+    "audio": "audio/conv_0077.wav",
+    "annotations": "annotations/conv_0077.json",
+    "duration": 73.45072336618207
+  },
+  {
+    "id": "conv_0078",
+    "audio": "audio/conv_0078.wav",
+    "annotations": "annotations/conv_0078.json",
+    "duration": 49.60903461796894
+  },
+  {
+    "id": "conv_0079",
+    "audio": "audio/conv_0079.wav",
+    "annotations": "annotations/conv_0079.json",
+    "duration": 19.631760977592304
+  },
+  {
+    "id": "conv_0080",
+    "audio": "audio/conv_0080.wav",
+    "annotations": "annotations/conv_0080.json",
+    "duration": 31.507514353088993
+  },
+  {
+    "id": "conv_0081",
+    "audio": "audio/conv_0081.wav",
+    "annotations": "annotations/conv_0081.json",
+    "duration": 49.68396787883026
+  },
+  {
+    "id": "conv_0082",
+    "audio": "audio/conv_0082.wav",
+    "annotations": "annotations/conv_0082.json",
+    "duration": 30.575184741060205
+  },
+  {
+    "id": "conv_0083",
+    "audio": "audio/conv_0083.wav",
+    "annotations": "annotations/conv_0083.json",
+    "duration": 32.01895934886547
+  },
+  {
+    "id": "conv_0084",
+    "audio": "audio/conv_0084.wav",
+    "annotations": "annotations/conv_0084.json",
+    "duration": 33.139147791173244
+  },
+  {
+    "id": "conv_0085",
+    "audio": "audio/conv_0085.wav",
+    "annotations": "annotations/conv_0085.json",
+    "duration": 47.67896663068173
+  },
+  {
+    "id": "conv_0086",
+    "audio": "audio/conv_0086.wav",
+    "annotations": "annotations/conv_0086.json",
+    "duration": 67.13156390407768
+  },
+  {
+    "id": "conv_0087",
+    "audio": "audio/conv_0087.wav",
+    "annotations": "annotations/conv_0087.json",
+    "duration": 56.52406649132753
+  },
+  {
+    "id": "conv_0088",
+    "audio": "audio/conv_0088.wav",
+    "annotations": "annotations/conv_0088.json",
+    "duration": 74.35489305650016
+  },
+  {
+    "id": "conv_0089",
+    "audio": "audio/conv_0089.wav",
+    "annotations": "annotations/conv_0089.json",
+    "duration": 30.05211404841246
+  },
+  {
+    "id": "conv_0090",
+    "audio": "audio/conv_0090.wav",
+    "annotations": "annotations/conv_0090.json",
+    "duration": 47.24161625868072
+  },
+  {
+    "id": "conv_0091",
+    "audio": "audio/conv_0091.wav",
+    "annotations": "annotations/conv_0091.json",
+    "duration": 32.190701280082
+  },
+  {
+    "id": "conv_0092",
+    "audio": "audio/conv_0092.wav",
+    "annotations": "annotations/conv_0092.json",
+    "duration": 27.977972835616605
+  },
+  {
+    "id": "conv_0093",
+    "audio": "audio/conv_0093.wav",
+    "annotations": "annotations/conv_0093.json",
+    "duration": 35.52518925565089
+  },
+  {
+    "id": "conv_0094",
+    "audio": "audio/conv_0094.wav",
+    "annotations": "annotations/conv_0094.json",
+    "duration": 51.46641159309263
+  },
+  {
+    "id": "conv_0095",
+    "audio": "audio/conv_0095.wav",
+    "annotations": "annotations/conv_0095.json",
+    "duration": 21.539274107036665
+  },
+  {
+    "id": "conv_0096",
+    "audio": "audio/conv_0096.wav",
+    "annotations": "annotations/conv_0096.json",
+    "duration": 55.547192110675276
+  },
+  {
+    "id": "conv_0097",
+    "audio": "audio/conv_0097.wav",
+    "annotations": "annotations/conv_0097.json",
+    "duration": 25.53402690320944
+  },
+  {
+    "id": "conv_0098",
+    "audio": "audio/conv_0098.wav",
+    "annotations": "annotations/conv_0098.json",
+    "duration": 22.959913248230507
+  },
+  {
+    "id": "conv_0099",
+    "audio": "audio/conv_0099.wav",
+    "annotations": "annotations/conv_0099.json",
+    "duration": 43.33429123872093
+  },
+  {
+    "id": "conv_0100",
+    "audio": "audio/conv_0100.wav",
+    "annotations": "annotations/conv_0100.json",
+    "duration": 47.52143441558598
+  },
+  {
+    "id": "conv_0101",
+    "audio": "audio/conv_0101.wav",
+    "annotations": "annotations/conv_0101.json",
+    "duration": 81.78381362480215
+  },
+  {
+    "id": "conv_0102",
+    "audio": "audio/conv_0102.wav",
+    "annotations": "annotations/conv_0102.json",
+    "duration": 52.61156690105507
+  },
+  {
+    "id": "conv_0103",
+    "audio": "audio/conv_0103.wav",
+    "annotations": "annotations/conv_0103.json",
+    "duration": 77.96730172222287
+  },
+  {
+    "id": "conv_0104",
+    "audio": "audio/conv_0104.wav",
+    "annotations": "annotations/conv_0104.json",
+    "duration": 26.25113227403882
+  },
+  {
+    "id": "conv_0105",
+    "audio": "audio/conv_0105.wav",
+    "annotations": "annotations/conv_0105.json",
+    "duration": 41.79724659447219
+  },
+  {
+    "id": "conv_0106",
+    "audio": "audio/conv_0106.wav",
+    "annotations": "annotations/conv_0106.json",
+    "duration": 26.474110904084313
+  },
+  {
+    "id": "conv_0107",
+    "audio": "audio/conv_0107.wav",
+    "annotations": "annotations/conv_0107.json",
+    "duration": 51.812620778450224
+  },
+  {
+    "id": "conv_0108",
+    "audio": "audio/conv_0108.wav",
+    "annotations": "annotations/conv_0108.json",
+    "duration": 23.451107716333212
+  },
+  {
+    "id": "conv_0109",
+    "audio": "audio/conv_0109.wav",
+    "annotations": "annotations/conv_0109.json",
+    "duration": 21.58212317891374
+  },
+  {
+    "id": "conv_0110",
+    "audio": "audio/conv_0110.wav",
+    "annotations": "annotations/conv_0110.json",
+    "duration": 32.42016694520659
+  },
+  {
+    "id": "conv_0111",
+    "audio": "audio/conv_0111.wav",
+    "annotations": "annotations/conv_0111.json",
+    "duration": 22.567885953304813
+  },
+  {
+    "id": "conv_0112",
+    "audio": "audio/conv_0112.wav",
+    "annotations": "annotations/conv_0112.json",
+    "duration": 51.03645916251975
+  },
+  {
+    "id": "conv_0113",
+    "audio": "audio/conv_0113.wav",
+    "annotations": "annotations/conv_0113.json",
+    "duration": 64.49192286716087
+  },
+  {
+    "id": "conv_0114",
+    "audio": "audio/conv_0114.wav",
+    "annotations": "annotations/conv_0114.json",
+    "duration": 40.2675694497727
+  },
+  {
+    "id": "conv_0115",
+    "audio": "audio/conv_0115.wav",
+    "annotations": "annotations/conv_0115.json",
+    "duration": 46.16939240766078
+  },
+  {
+    "id": "conv_0116",
+    "audio": "audio/conv_0116.wav",
+    "annotations": "annotations/conv_0116.json",
+    "duration": 15.571380382177335
+  },
+  {
+    "id": "conv_0117",
+    "audio": "audio/conv_0117.wav",
+    "annotations": "annotations/conv_0117.json",
+    "duration": 40.22833562746656
+  },
+  {
+    "id": "conv_0118",
+    "audio": "audio/conv_0118.wav",
+    "annotations": "annotations/conv_0118.json",
+    "duration": 38.28549667287678
+  },
+  {
+    "id": "conv_0119",
+    "audio": "audio/conv_0119.wav",
+    "annotations": "annotations/conv_0119.json",
+    "duration": 67.22814093617073
+  },
+  {
+    "id": "conv_0120",
+    "audio": "audio/conv_0120.wav",
+    "annotations": "annotations/conv_0120.json",
+    "duration": 54.35705222765429
+  },
+  {
+    "id": "conv_0121",
+    "audio": "audio/conv_0121.wav",
+    "annotations": "annotations/conv_0121.json",
+    "duration": 35.85015796642389
+  },
+  {
+    "id": "conv_0122",
+    "audio": "audio/conv_0122.wav",
+    "annotations": "annotations/conv_0122.json",
+    "duration": 18.10749975689603
+  },
+  {
+    "id": "conv_0123",
+    "audio": "audio/conv_0123.wav",
+    "annotations": "annotations/conv_0123.json",
+    "duration": 39.54807956256333
+  },
+  {
+    "id": "conv_0124",
+    "audio": "audio/conv_0124.wav",
+    "annotations": "annotations/conv_0124.json",
+    "duration": 15.351547528590608
+  },
+  {
+    "id": "conv_0125",
+    "audio": "audio/conv_0125.wav",
+    "annotations": "annotations/conv_0125.json",
+    "duration": 52.73813035095977
+  },
+  {
+    "id": "conv_0126",
+    "audio": "audio/conv_0126.wav",
+    "annotations": "annotations/conv_0126.json",
+    "duration": 32.31969356744587
+  },
+  {
+    "id": "conv_0127",
+    "audio": "audio/conv_0127.wav",
+    "annotations": "annotations/conv_0127.json",
+    "duration": 26.06978982714665
+  },
+  {
+    "id": "conv_0128",
+    "audio": "audio/conv_0128.wav",
+    "annotations": "annotations/conv_0128.json",
+    "duration": 53.16049750357393
+  },
+  {
+    "id": "conv_0129",
+    "audio": "audio/conv_0129.wav",
+    "annotations": "annotations/conv_0129.json",
+    "duration": 60.39562925730034
+  },
+  {
+    "id": "conv_0130",
+    "audio": "audio/conv_0130.wav",
+    "annotations": "annotations/conv_0130.json",
+    "duration": 25.679855602488384
+  },
+  {
+    "id": "conv_0131",
+    "audio": "audio/conv_0131.wav",
+    "annotations": "annotations/conv_0131.json",
+    "duration": 36.96116674304663
+  },
+  {
+    "id": "conv_0132",
+    "audio": "audio/conv_0132.wav",
+    "annotations": "annotations/conv_0132.json",
+    "duration": 40.7895226090786
+  },
+  {
+    "id": "conv_0133",
+    "audio": "audio/conv_0133.wav",
+    "annotations": "annotations/conv_0133.json",
+    "duration": 31.10378250199187
+  },
+  {
+    "id": "conv_0134",
+    "audio": "audio/conv_0134.wav",
+    "annotations": "annotations/conv_0134.json",
+    "duration": 28.99773250860462
+  },
+  {
+    "id": "conv_0135",
+    "audio": "audio/conv_0135.wav",
+    "annotations": "annotations/conv_0135.json",
+    "duration": 43.22493354300055
+  },
+  {
+    "id": "conv_0136",
+    "audio": "audio/conv_0136.wav",
+    "annotations": "annotations/conv_0136.json",
+    "duration": 34.736968252159585
+  },
+  {
+    "id": "conv_0137",
+    "audio": "audio/conv_0137.wav",
+    "annotations": "annotations/conv_0137.json",
+    "duration": 50.895548906179826
+  },
+  {
+    "id": "conv_0138",
+    "audio": "audio/conv_0138.wav",
+    "annotations": "annotations/conv_0138.json",
+    "duration": 43.181016923394715
+  },
+  {
+    "id": "conv_0139",
+    "audio": "audio/conv_0139.wav",
+    "annotations": "annotations/conv_0139.json",
+    "duration": 33.82105208991408
+  },
+  {
+    "id": "conv_0140",
+    "audio": "audio/conv_0140.wav",
+    "annotations": "annotations/conv_0140.json",
+    "duration": 54.60675322316396
+  },
+  {
+    "id": "conv_0141",
+    "audio": "audio/conv_0141.wav",
+    "annotations": "annotations/conv_0141.json",
+    "duration": 47.691627459925016
+  },
+  {
+    "id": "conv_0142",
+    "audio": "audio/conv_0142.wav",
+    "annotations": "annotations/conv_0142.json",
+    "duration": 25.478725893269818
+  },
+  {
+    "id": "conv_0143",
+    "audio": "audio/conv_0143.wav",
+    "annotations": "annotations/conv_0143.json",
+    "duration": 40.69469856799045
+  },
+  {
+    "id": "conv_0144",
+    "audio": "audio/conv_0144.wav",
+    "annotations": "annotations/conv_0144.json",
+    "duration": 33.126113517799595
+  },
+  {
+    "id": "conv_0145",
+    "audio": "audio/conv_0145.wav",
+    "annotations": "annotations/conv_0145.json",
+    "duration": 25.74642403167594
+  },
+  {
+    "id": "conv_0146",
+    "audio": "audio/conv_0146.wav",
+    "annotations": "annotations/conv_0146.json",
+    "duration": 34.20184907208386
+  },
+  {
+    "id": "conv_0147",
+    "audio": "audio/conv_0147.wav",
+    "annotations": "annotations/conv_0147.json",
+    "duration": 27.35041456774819
+  },
+  {
+    "id": "conv_0148",
+    "audio": "audio/conv_0148.wav",
+    "annotations": "annotations/conv_0148.json",
+    "duration": 63.95384967110055
+  },
+  {
+    "id": "conv_0149",
+    "audio": "audio/conv_0149.wav",
+    "annotations": "annotations/conv_0149.json",
+    "duration": 47.308579054306506
+  },
+  {
+    "id": "conv_0150",
+    "audio": "audio/conv_0150.wav",
+    "annotations": "annotations/conv_0150.json",
+    "duration": 29.381242697139836
+  },
+  {
+    "id": "conv_0151",
+    "audio": "audio/conv_0151.wav",
+    "annotations": "annotations/conv_0151.json",
+    "duration": 33.41564919176853
+  },
+  {
+    "id": "conv_0152",
+    "audio": "audio/conv_0152.wav",
+    "annotations": "annotations/conv_0152.json",
+    "duration": 49.05716348355064
+  },
+  {
+    "id": "conv_0153",
+    "audio": "audio/conv_0153.wav",
+    "annotations": "annotations/conv_0153.json",
+    "duration": 32.49965319586681
+  },
+  {
+    "id": "conv_0154",
+    "audio": "audio/conv_0154.wav",
+    "annotations": "annotations/conv_0154.json",
+    "duration": 42.99905637621956
+  },
+  {
+    "id": "conv_0155",
+    "audio": "audio/conv_0155.wav",
+    "annotations": "annotations/conv_0155.json",
+    "duration": 16.535182694412786
+  },
+  {
+    "id": "conv_0156",
+    "audio": "audio/conv_0156.wav",
+    "annotations": "annotations/conv_0156.json",
+    "duration": 43.171325373240414
+  },
+  {
+    "id": "conv_0157",
+    "audio": "audio/conv_0157.wav",
+    "annotations": "annotations/conv_0157.json",
+    "duration": 83.68458656737079
+  },
+  {
+    "id": "conv_0158",
+    "audio": "audio/conv_0158.wav",
+    "annotations": "annotations/conv_0158.json",
+    "duration": 39.03349077039729
+  },
+  {
+    "id": "conv_0159",
+    "audio": "audio/conv_0159.wav",
+    "annotations": "annotations/conv_0159.json",
+    "duration": 38.32825021741586
+  },
+  {
+    "id": "conv_0160",
+    "audio": "audio/conv_0160.wav",
+    "annotations": "annotations/conv_0160.json",
+    "duration": 93.8673633268506
+  },
+  {
+    "id": "conv_0161",
+    "audio": "audio/conv_0161.wav",
+    "annotations": "annotations/conv_0161.json",
+    "duration": 57.231233721416785
+  },
+  {
+    "id": "conv_0162",
+    "audio": "audio/conv_0162.wav",
+    "annotations": "annotations/conv_0162.json",
+    "duration": 28.944531955232865
+  },
+  {
+    "id": "conv_0163",
+    "audio": "audio/conv_0163.wav",
+    "annotations": "annotations/conv_0163.json",
+    "duration": 43.315260127692405
+  },
+  {
+    "id": "conv_0164",
+    "audio": "audio/conv_0164.wav",
+    "annotations": "annotations/conv_0164.json",
+    "duration": 63.56474477546344
+  },
+  {
+    "id": "conv_0165",
+    "audio": "audio/conv_0165.wav",
+    "annotations": "annotations/conv_0165.json",
+    "duration": 32.565517640842934
+  },
+  {
+    "id": "conv_0166",
+    "audio": "audio/conv_0166.wav",
+    "annotations": "annotations/conv_0166.json",
+    "duration": 58.130254595886385
+  },
+  {
+    "id": "conv_0167",
+    "audio": "audio/conv_0167.wav",
+    "annotations": "annotations/conv_0167.json",
+    "duration": 18.44224489883203
+  },
+  {
+    "id": "conv_0168",
+    "audio": "audio/conv_0168.wav",
+    "annotations": "annotations/conv_0168.json",
+    "duration": 21.517439259357623
+  },
+  {
+    "id": "conv_0169",
+    "audio": "audio/conv_0169.wav",
+    "annotations": "annotations/conv_0169.json",
+    "duration": 26.619767702671467
+  },
+  {
+    "id": "conv_0170",
+    "audio": "audio/conv_0170.wav",
+    "annotations": "annotations/conv_0170.json",
+    "duration": 22.483743727190475
+  },
+  {
+    "id": "conv_0171",
+    "audio": "audio/conv_0171.wav",
+    "annotations": "annotations/conv_0171.json",
+    "duration": 41.42033919448073
+  },
+  {
+    "id": "conv_0172",
+    "audio": "audio/conv_0172.wav",
+    "annotations": "annotations/conv_0172.json",
+    "duration": 46.20039097470929
+  },
+  {
+    "id": "conv_0173",
+    "audio": "audio/conv_0173.wav",
+    "annotations": "annotations/conv_0173.json",
+    "duration": 44.85431775094761
+  },
+  {
+    "id": "conv_0174",
+    "audio": "audio/conv_0174.wav",
+    "annotations": "annotations/conv_0174.json",
+    "duration": 24.219188325097015
+  },
+  {
+    "id": "conv_0175",
+    "audio": "audio/conv_0175.wav",
+    "annotations": "annotations/conv_0175.json",
+    "duration": 41.54079501497821
+  },
+  {
+    "id": "conv_0176",
+    "audio": "audio/conv_0176.wav",
+    "annotations": "annotations/conv_0176.json",
+    "duration": 53.62393230339062
+  },
+  {
+    "id": "conv_0177",
+    "audio": "audio/conv_0177.wav",
+    "annotations": "annotations/conv_0177.json",
+    "duration": 33.299432297359765
+  },
+  {
+    "id": "conv_0178",
+    "audio": "audio/conv_0178.wav",
+    "annotations": "annotations/conv_0178.json",
+    "duration": 40.3313293460459
+  },
+  {
+    "id": "conv_0179",
+    "audio": "audio/conv_0179.wav",
+    "annotations": "annotations/conv_0179.json",
+    "duration": 66.28872677849726
+  },
+  {
+    "id": "conv_0180",
+    "audio": "audio/conv_0180.wav",
+    "annotations": "annotations/conv_0180.json",
+    "duration": 29.404586980107833
+  },
+  {
+    "id": "conv_0181",
+    "audio": "audio/conv_0181.wav",
+    "annotations": "annotations/conv_0181.json",
+    "duration": 33.15198595160399
+  },
+  {
+    "id": "conv_0182",
+    "audio": "audio/conv_0182.wav",
+    "annotations": "annotations/conv_0182.json",
+    "duration": 50.06015681315718
+  },
+  {
+    "id": "conv_0183",
+    "audio": "audio/conv_0183.wav",
+    "annotations": "annotations/conv_0183.json",
+    "duration": 14.770532861297383
+  },
+  {
+    "id": "conv_0184",
+    "audio": "audio/conv_0184.wav",
+    "annotations": "annotations/conv_0184.json",
+    "duration": 26.70142001821744
+  },
+  {
+    "id": "conv_0185",
+    "audio": "audio/conv_0185.wav",
+    "annotations": "annotations/conv_0185.json",
+    "duration": 29.499033446993884
+  },
+  {
+    "id": "conv_0186",
+    "audio": "audio/conv_0186.wav",
+    "annotations": "annotations/conv_0186.json",
+    "duration": 46.751164573498194
+  },
+  {
+    "id": "conv_0187",
+    "audio": "audio/conv_0187.wav",
+    "annotations": "annotations/conv_0187.json",
+    "duration": 50.73912719047575
+  },
+  {
+    "id": "conv_0188",
+    "audio": "audio/conv_0188.wav",
+    "annotations": "annotations/conv_0188.json",
+    "duration": 63.251138056721175
+  },
+  {
+    "id": "conv_0189",
+    "audio": "audio/conv_0189.wav",
+    "annotations": "annotations/conv_0189.json",
+    "duration": 71.18377184318113
+  },
+  {
+    "id": "conv_0190",
+    "audio": "audio/conv_0190.wav",
+    "annotations": "annotations/conv_0190.json",
+    "duration": 42.60492013479055
+  },
+  {
+    "id": "conv_0191",
+    "audio": "audio/conv_0191.wav",
+    "annotations": "annotations/conv_0191.json",
+    "duration": 19.88795881361241
+  },
+  {
+    "id": "conv_0192",
+    "audio": "audio/conv_0192.wav",
+    "annotations": "annotations/conv_0192.json",
+    "duration": 18.648820298800178
+  },
+  {
+    "id": "conv_0193",
+    "audio": "audio/conv_0193.wav",
+    "annotations": "annotations/conv_0193.json",
+    "duration": 32.28205733218944
+  },
+  {
+    "id": "conv_0194",
+    "audio": "audio/conv_0194.wav",
+    "annotations": "annotations/conv_0194.json",
+    "duration": 30.155776152889363
+  },
+  {
+    "id": "conv_0195",
+    "audio": "audio/conv_0195.wav",
+    "annotations": "annotations/conv_0195.json",
+    "duration": 11.361914155962774
+  },
+  {
+    "id": "conv_0196",
+    "audio": "audio/conv_0196.wav",
+    "annotations": "annotations/conv_0196.json",
+    "duration": 79.84718776089427
+  },
+  {
+    "id": "conv_0197",
+    "audio": "audio/conv_0197.wav",
+    "annotations": "annotations/conv_0197.json",
+    "duration": 50.8971572159407
+  },
+  {
+    "id": "conv_0198",
+    "audio": "audio/conv_0198.wav",
+    "annotations": "annotations/conv_0198.json",
+    "duration": 58.1846601506856
+  },
+  {
+    "id": "conv_0199",
+    "audio": "audio/conv_0199.wav",
+    "annotations": "annotations/conv_0199.json",
+    "duration": 67.09053006202933
+  }
+]
