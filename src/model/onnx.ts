@@ -60,6 +60,9 @@ export class ONNXModel implements Model {
   /** Cache the last inference result for frames between batches. */
   private lastResult: ClassificationResult | null = null;
 
+  /** Hysteresis flag for energy-gate — prevents rapid silence/speech toggling. */
+  private silenceMode = false;
+
   constructor(sensitivity = 0.5, useWebGpu = false) {
     this.fallback = new EnergyVAD(sensitivity);
     this.useWebGpu = useWebGpu;
@@ -134,10 +137,11 @@ export class ONNXModel implements Model {
    * Run inference on extracted features.
    *
    * Buffers frames into a sliding window and runs the ONNX model
-   * every 100ms (10 frames). Between inference runs, returns the
-   * cached result. Falls back to EnergyVAD when no model is loaded.
+   * every 100ms (10 frames). Returns `null` when just buffering
+   * (no new inference). Falls back to EnergyVAD when no ONNX model
+   * is loaded.
    */
-  async predict(features: AudioFeatures): Promise<ClassificationResult> {
+  async predict(features: AudioFeatures): Promise<ClassificationResult | null> {
     if (!this.session || !this.ort) {
       return this.fallback.classify(features);
     }
@@ -152,14 +156,15 @@ export class ONNXModel implements Model {
 
       try {
         this.lastResult = await this.runInference();
+        return this.lastResult;
       } catch (err) {
         console.warn("[utterance] ONNX inference failed, using EnergyVAD:", err);
         return this.fallback.classify(features);
       }
     }
 
-    // Return cached result or fallback
-    return this.lastResult ?? this.fallback.classify(features);
+    // Still buffering — no new result
+    return null;
   }
 
   /**
@@ -211,6 +216,15 @@ export class ONNXModel implements Model {
       input.set(this.frameBuffer.subarray(srcIdx, srcIdx + FEATURE_DIM), dstIdx);
     }
 
+    // Measure recent raw energy BEFORE normalization (last 10 frames = ~100ms)
+    // Feature index 13 = RMS energy. Used to gate interrupt_intent during silence.
+    const RECENT = 10;
+    let recentEnergy = 0;
+    for (let i = CONTEXT_FRAMES - RECENT; i < CONTEXT_FRAMES; i++) {
+      recentEnergy += input[i * FEATURE_DIM + 13];
+    }
+    recentEnergy /= RECENT;
+
     // Normalize features to match Python training pipeline:
     // Features 0-13 (MFCCs + energy): per-window zero-mean, unit-variance
     for (let f = 0; f < 14; f++) {
@@ -257,6 +271,56 @@ export class ONNXModel implements Model {
       }
     }
 
+    // Energy-gate with hysteresis: override model output during silence.
+    //
+    // The per-window zero-mean normalization erases the energy signal from the
+    // model's perspective — once the entire window is silent, normalized values
+    // look similar to speech. The model then outputs "speaking" (~78%) or
+    // "interrupt_intent" (~92%) for pure silence.
+    //
+    // Fix: when recent raw energy is below threshold, force "thinking_pause".
+    // This lets the TurnDetector's pause timer naturally fire turnEnd.
+    //
+    // Hysteresis prevents rapid toggling when energy hovers near the threshold
+    // (e.g. quiet breath, background noise). We use a stricter threshold to
+    // enter silence mode and require clearly audible speech to exit it.
+    const SILENCE_ENTER_THRESHOLD = 0.02;   // Must drop below this to enter silence
+    const SILENCE_EXIT_THRESHOLD  = 0.06;   // Must rise above this to exit silence
+
+    if (this.silenceMode) {
+      // In silence mode — only exit when energy clearly rises (real speech)
+      if (recentEnergy > SILENCE_EXIT_THRESHOLD) {
+        this.silenceMode = false;
+      }
+    } else {
+      // Not in silence mode — enter when energy drops low enough
+      if (recentEnergy < SILENCE_ENTER_THRESHOLD) {
+        this.silenceMode = true;
+      }
+    }
+
+    if (this.silenceMode) {
+      const modelLabel = LABELS[bestIdx];
+      if (modelLabel === "speaking" || modelLabel === "interrupt_intent") {
+        // Override to thinking_pause (index 1) with sufficient confidence
+        bestIdx = 1; // thinking_pause
+        bestProb = Math.max(probs[1], 0.7); // Ensure high enough confidence to pass threshold
+      }
+    }
+
+    // Interrupt energy gate: the model was trained on Switchboard two-speaker
+    // telephone data, so it classifies single-speaker speech transitions as
+    // interrupt_intent (~90%). In single-speaker browser use, interrupt should
+    // only fire when there's strong sustained energy (actual overlapping speech).
+    // Gate: require higher energy to trust interrupt_intent predictions.
+    const INTERRUPT_ENERGY_THRESHOLD = 0.08;
+    if (LABELS[bestIdx] === "interrupt_intent" && recentEnergy < INTERRUPT_ENERGY_THRESHOLD) {
+      // Low-energy interrupt — likely a false positive from speech transition.
+      // Downgrade to speaking (the model's second-best class is usually speaking).
+      bestIdx = 0; // speaking
+      bestProb = probs[0];
+    }
+
     return {
       label: LABELS[bestIdx],
       confidence: bestProb,
@@ -270,6 +334,7 @@ export class ONNXModel implements Model {
     this.framesBuffered = 0;
     this.framesSinceInference = 0;
     this.lastResult = null;
+    this.silenceMode = false;
   }
 }
 

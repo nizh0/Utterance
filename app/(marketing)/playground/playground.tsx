@@ -349,8 +349,8 @@ export function Playground() {
         pushEvent("turnEnd");
       });
 
-      detector.on("interrupt", () => {
-        addEntry("interrupt", "User interrupted");
+      detector.on("interrupt", (e) => {
+        addEntry("interrupt", `Confidence: ${e.confidence.toFixed(2)}`);
         setSpeaking(true);
         pushEvent("interrupt");
       });

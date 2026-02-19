@@ -123,7 +123,7 @@ export default function HomePage() {
           <div className="landing-hero-highlights">
             <span className="landing-hero-highlight">
               <Cpu size={14} strokeWidth={1.5} />
-              170 KB model
+              ~2MB model
             </span>
             <span className="landing-hero-highlight-sep" aria-hidden="true" />
             <span className="landing-hero-highlight">97.8% accuracy</span>

@@ -66,6 +66,7 @@ export interface TurnEndEvent {
 
 export interface InterruptEvent {
   timestamp: number;
+  confidence: number;
 }
 
 export interface UtteranceEventMap {
@@ -105,6 +106,6 @@ export interface AudioFeatures {
 
 export interface Model {
   load(path: string): Promise<void>;
-  predict(features: AudioFeatures): Promise<ClassificationResult>;
+  predict(features: AudioFeatures): Promise<ClassificationResult | null>;
   dispose(): void;
 }
