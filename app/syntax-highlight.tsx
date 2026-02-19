@@ -28,11 +28,20 @@ function tokenize(code: string): Token[] {
     "class",
     "extends",
     "async",
+    "as",
+    "def",
+    "print",
+    "True",
+    "False",
+    "None",
   ]);
 
   while (i < code.length) {
-    // Line comments
-    if (code[i] === "/" && code[i + 1] === "/") {
+    // Line comments (// for JS, # for Python)
+    if (
+      (code[i] === "/" && code[i + 1] === "/") ||
+      (code[i] === "#" && (i === 0 || code[i - 1] === "\n" || /\s/.test(code[i - 1])))
+    ) {
       let end = code.indexOf("\n", i);
       if (end === -1) end = code.length;
       tokens.push({ text: code.slice(i, end), className: "syn-comment" });

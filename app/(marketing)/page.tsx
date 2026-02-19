@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Mic, Brain, Shield, Zap, Box, Code2, Cpu } from "lucide-react";
 import { GitHubIcon, DiscordIcon } from "../shared";
-import { CopyButton } from "../copy-button";
+import { InstallTabs } from "./install-tabs";
+import { QuickStartTabs } from "./quickstart-tabs";
 import { WaveBackground } from "../wave-background";
-import { SyntaxHighlight } from "../syntax-highlight";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -65,24 +65,6 @@ const benefits = [
   },
 ];
 
-const codeSnippet = `import { Utterance } from "@utterance/core";
-
-const detector = new Utterance();
-
-detector.on("turnEnd", (result) => {
-  console.log("User is done speaking", result.confidence);
-});
-
-detector.on("pause", (result) => {
-  console.log("User is thinking...", result.duration);
-});
-
-detector.on("interrupt", () => {
-  console.log("User wants to speak. Stop AI response");
-});
-
-await detector.start();`;
-
 export default function HomePage() {
   return (
     <main>
@@ -110,16 +92,7 @@ export default function HomePage() {
               <Link href="/playground">Playground</Link>
             </Button>
           </div>
-          <div
-            className="landing-hero-install"
-            role="group"
-            aria-label="Install command"
-          >
-            <code className="landing-install-text">
-              npm install @utterance/core
-            </code>
-            <CopyButton text="npm install @utterance/core" />
-          </div>
+          <InstallTabs />
           <div className="landing-hero-highlights">
             <span className="landing-hero-highlight">
               <Cpu size={14} strokeWidth={1.5} />
@@ -206,7 +179,7 @@ export default function HomePage() {
         <div className="landing-grid-4" role="list" aria-label="Model stats">
           <Card className="border-none shadow-none gap-0 py-0" role="listitem">
             <CardContent className="flex flex-col gap-2 p-5">
-              <span className="landing-stat-number">170 KB</span>
+              <span className="landing-stat-number">~2 MB</span>
               <span className="text-base text-muted-foreground">
                 Int8 quantized ONNX model. Loads instantly, even on slow
                 connections.
@@ -259,32 +232,7 @@ export default function HomePage() {
             Install and start detecting in seconds.
           </h2>
         </div>
-        <div className="landing-quickstart">
-          <div
-            className="landing-install-row"
-            role="group"
-            aria-label="Install command"
-          >
-            <code className="landing-install-text">
-              npm install @utterance/core
-            </code>
-            <CopyButton text="npm install @utterance/core" />
-          </div>
-          <figure className="landing-code-block" aria-label="Code example">
-            <div className="landing-code-header" aria-hidden="true">
-              <div className="landing-code-dot landing-code-dot--red" />
-              <div className="landing-code-dot landing-code-dot--yellow" />
-              <div className="landing-code-dot landing-code-dot--green" />
-              <span className="landing-code-filename">index.ts</span>
-            </div>
-            <pre
-              className="landing-code-pre"
-              aria-label="Utterance usage example code"
-            >
-              <SyntaxHighlight code={codeSnippet} />
-            </pre>
-          </figure>
-        </div>
+        <QuickStartTabs />
       </section>
 
       {/* CTA */}

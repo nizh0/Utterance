@@ -139,15 +139,53 @@ html {
   align-items: center;
 }
 
-.landing-hero-install {
+.install-tabs {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.install-tabs-header {
+  display: flex;
+  border-right: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.install-tab {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.install-tab:first-child {
+  padding-left: 16px;
+}
+
+.install-tab:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.install-tab-active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.install-tabs-body {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 8px 8px 8px 12px;
   white-space: nowrap;
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 100px;
-  padding: 8px 8px 8px 16px;
 }
 
 .landing-hero-highlights {
@@ -250,15 +288,98 @@ html {
   gap: 16px;
 }
 
-.landing-install-row {
+/* Quick-start tabbed code block */
+.qs-block {
+  background-color: rgb(23, 22, 21);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.qs-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background-color: rgb(23, 22, 21);
-  border-radius: 8px;
-  padding: 4px 4px 4px 8px;
-  width: fit-content;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
+
+.qs-header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.qs-header-tabs {
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.qs-tab {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.35);
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.qs-tab:hover {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.qs-tab-active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.qs-filename {
+  margin-left: auto;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.25);
+  font-family: var(--font-mono, monospace);
+}
+
+.qs-install-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 8px 10px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.qs-install-prompt {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 13px;
+  font-family: var(--font-mono, monospace);
+  user-select: none;
+}
+
+.qs-install-cmd {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-mono, monospace);
+  flex: 1;
+}
+
+.qs-install-bar .copy-btn {
+  margin-left: auto;
+}
+
 
 .landing-install-text {
   font-size: 14px;
@@ -1010,10 +1131,12 @@ html {
     text-align: center;
   }
 
-  /* Hero install pill: allow wrapping on very narrow screens */
-  .landing-hero-install {
-    white-space: normal;
+  .install-tabs {
     max-width: 100%;
+  }
+
+  .install-tabs-body {
+    white-space: normal;
   }
 
   .landing-section {
