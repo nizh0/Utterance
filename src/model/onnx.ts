@@ -103,7 +103,7 @@ export class ONNXModel implements Model {
         try {
           // eslint-disable-next-line @typescript-eslint/no-implied-eval
           const getUrl = new Function("p", "b", "return new URL(p, b).href");
-          const href = getUrl("../../models/utterance-v1.onnx", import.meta.url) as string;
+          const href = getUrl("../../models/utterance-v2.onnx", import.meta.url) as string;
           const response = await fetch(href);
           if (response.ok) {
             modelSource = await response.arrayBuffer();

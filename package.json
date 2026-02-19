@@ -1,6 +1,6 @@
 {
   "name": "@utterance/core",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Client-side semantic endpointing. Know when they're done talking.",
   "type": "module",
   "main": "dist/index.cjs",
@@ -78,7 +78,6 @@
   "dependencies": {
     "@next/third-parties": "^16.1.6",
     "@react-three/fiber": "^9.5.0",
-    "@utterance/core": "^0.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "d3-scale": "^4.0.2",

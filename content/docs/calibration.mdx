@@ -1,0 +1,166 @@
+---
+title: Model Calibration
+description: How Utterance's ML model is trained, calibrated, and deployed.
+---
+
+Utterance ships a hybrid Conv + Attention model that classifies audio into four conversational states. This page documents the full pipeline from features to deployment.
+
+## Architecture
+
+The model combines 1D convolutions for local pattern extraction with multi-head self-attention for temporal context:
+
+```
+Input: (batch, 100, 17)     ← 1 second of audio features at 10ms hop
+  → 3x Conv1d blocks        ← local patterns (onset, silence boundaries, energy)
+  → 2x Transformer layers   ← longer-range temporal context
+  → Global Average Pooling
+  → Linear head
+Output: (batch, 4)          ← logits for [speaking, thinking_pause, turn_complete, interrupt_intent]
+```
+
+| Component | Details |
+|-----------|---------|
+| Conv blocks | channels: [64, 128, 128], kernels: [5, 3, 3], BatchNorm + ReLU |
+| Attention | 128-dim, 8 heads, 2 layers, feedforward 512 |
+| Head | Global average pooling + dropout (0.3) + linear |
+| Parameters | ~477K |
+| ONNX size | ~2 MB (float32) |
+| Inference | Under 100ms in WASM on mobile browsers |
+
+## Feature Vector
+
+Each 10ms audio frame produces a 17-dimensional feature vector:
+
+| Index | Feature | Normalization |
+|-------|---------|---------------|
+| 0–12 | MFCCs (Mel-Frequency Cepstral Coefficients) | Per-window zero-mean, unit-variance |
+| 13 | RMS energy | Per-window zero-mean, unit-variance |
+| 14 | Pitch (F0) | Divided by 500 Hz → [0, 1] |
+| 15 | Speech rate | Peaks/sec divided by 10 → ~[0, 1] |
+| 16 | Pause duration | Accumulated silence capped at 5s, divided by 5 → [0, 1] |
+
+The model ingests a sliding window of 100 frames (1 second) and runs inference every 10 frames (100ms).
+
+### Feature Parity
+
+The TypeScript runtime extractor (`src/features/extractor.ts`) and the Python training extractor (`training/features/extract.py`) must produce matching feature distributions. Key alignment points:
+
+- **MFCC pipeline**: Pre-emphasis (0.97) → Hamming window → FFT → 40 Mel filters → log → DCT
+- **Normalization**: Applied at inference time in `ONNXModel.runInference()`, not in the feature extractor. Features 0–13 are normalized per-window (zero-mean, unit-variance). Pitch is scaled by dividing by 500.
+- **Noise augmentation** during training (std=0.015) absorbs the ~1–2% drift between librosa (Python) and the custom TypeScript DSP
+
+## Training Pipeline
+
+### Data
+
+Training data comes from the Switchboard corpus with labeled turn boundaries. Features are extracted into windowed `.npz` files:
+
+```bash
+python features/extract.py --input data/processed/ --output data/features/ --config configs/hybrid_v2.yaml
+```
+
+### Training
+
+```bash
+python train.py --config configs/hybrid_v2.yaml --data data/features/ --output checkpoints/
+```
+
+Key training settings:
+
+| Setting | Value |
+|---------|-------|
+| Optimizer | AdamW (lr=0.0005, weight_decay=0.02) |
+| Scheduler | Cosine with 5-epoch warmup |
+| Batch size | 64 |
+| Loss | Cross-entropy with class weights + label smoothing (0.1) |
+| Early stopping | 10 epochs patience |
+| Split | 80/20 stratified train/val |
+
+**Class weights** are computed as smoothed inverse-frequency to handle class imbalance. Label smoothing (0.1) prevents overconfident predictions and produces better-calibrated softmax outputs.
+
+### Export
+
+```bash
+python export.py --checkpoint checkpoints/best.pt --output models/utterance-v2.onnx --no-quantize
+```
+
+The model is exported as **float32** (no int8 quantization). At 2 MB it's well under the 5 MB budget, and float32 avoids quantization artifacts on this small model.
+
+The export script validates the ONNX output against PyTorch to ensure numerical parity.
+
+## Confidence Calibration
+
+The model outputs logits that are converted to probabilities via softmax. Well-calibrated confidence means a prediction with 0.85 confidence is correct ~85% of the time.
+
+Three techniques keep confidence calibrated:
+
+1. **Label smoothing** (0.1) — prevents the model from learning to output extreme logits. Instead of training toward [1, 0, 0, 0], it trains toward [0.925, 0.025, 0.025, 0.025].
+
+2. **Feature normalization at inference** — the runtime normalizes features to match the training distribution. Without this, the model sees out-of-distribution inputs and collapses to near-uniform softmax outputs.
+
+3. **Class-weighted loss** — smoothed inverse-frequency weighting ensures minority classes (like `interrupt_intent`) get proper gradient signal during training.
+
+## Runtime Normalization
+
+This is the most critical calibration step. The `ONNXModel.runInference()` method normalizes the input tensor after unrolling the circular buffer:
+
+```typescript
+// Features 0-13 (MFCCs + energy): per-window zero-mean, unit-variance
+for (let f = 0; f < 14; f++) {
+  // compute mean across 100 frames
+  // compute std across 100 frames
+  // normalize: (value - mean) / std
+}
+
+// Feature 14 (pitch): scale Hz to [0, 1]
+input[i * FEATURE_DIM + 14] /= 500;
+
+// Features 15-16: already normalized in the extractor
+```
+
+This matches the Python training pipeline's `_normalize()` call on MFCCs and energy, and the `f0 / 500.0` pitch scaling.
+
+## Deployment
+
+The trained ONNX model is deployed two ways:
+
+| Method | Description |
+|--------|-------------|
+| **CDN** (default) | Loaded from Cloudflare R2 at runtime. Zero bundle impact. |
+| **Bundled** | Included in the `@utterance/core` npm package under `models/`. Works offline. |
+
+```typescript
+// CDN (default) — model fetched on first .start()
+const utterance = new Utterance({ modelPath: "cdn" });
+
+// Bundled — uses the model from node_modules
+const utterance = new Utterance({ modelPath: "bundled" });
+
+// No model — falls back to EnergyVAD
+const utterance = new Utterance({ modelPath: "disabled" });
+```
+
+If the CDN fetch or ONNX Runtime initialization fails, Utterance automatically falls back to the EnergyVAD baseline.
+
+## Retraining
+
+To retrain the model with new data or a modified architecture:
+
+```bash
+cd training
+source .venv/bin/activate
+
+# 1. Extract features
+python features/extract.py --input data/processed/ --output data/features/ --config configs/hybrid_v2.yaml
+
+# 2. Train
+python train.py --config configs/hybrid_v2.yaml --data data/features/ --output checkpoints/
+
+# 3. Export to ONNX (float32)
+python export.py --checkpoint checkpoints/best.pt --output ../models/utterance-v2.onnx --no-quantize
+
+# 4. Upload to CDN
+npx wrangler r2 object put "utterance-models/v2/utterance-v2.onnx" --file ../models/utterance-v2.onnx --remote
+```
+
+The config YAML controls everything — model dimensions, training hyperparameters, and data settings. See `training/configs/hybrid_v2.yaml` for the current configuration.

@@ -123,14 +123,16 @@ export default function HomePage() {
           <div className="landing-hero-highlights">
             <span className="landing-hero-highlight">
               <Cpu size={14} strokeWidth={1.5} />
-              170 KB ONNX model
+              170 KB model
             </span>
             <span className="landing-hero-highlight-sep" aria-hidden="true" />
             <span className="landing-hero-highlight">97.8% accuracy</span>
             <span className="landing-hero-highlight-sep" aria-hidden="true" />
-            <span className="landing-hero-highlight">Runs in-browser via WASM</span>
+            <span className="landing-hero-highlight">
+              Runs in-browser via WASM
+            </span>
             <span className="landing-hero-highlight-sep" aria-hidden="true" />
-            <span className="landing-hero-highlight">v0.0.2</span>
+            <span className="landing-hero-highlight">v2</span>
           </div>
         </div>
       </section>
@@ -202,10 +204,7 @@ export default function HomePage() {
           </p>
         </div>
         <div className="landing-grid-4" role="list" aria-label="Model stats">
-          <Card
-            className="border-none shadow-none gap-0 py-0"
-            role="listitem"
-          >
+          <Card className="border-none shadow-none gap-0 py-0" role="listitem">
             <CardContent className="flex flex-col gap-2 p-5">
               <span className="landing-stat-number">170 KB</span>
               <span className="text-base text-muted-foreground">
@@ -214,10 +213,7 @@ export default function HomePage() {
               </span>
             </CardContent>
           </Card>
-          <Card
-            className="border-none shadow-none gap-0 py-0"
-            role="listitem"
-          >
+          <Card className="border-none shadow-none gap-0 py-0" role="listitem">
             <CardContent className="flex flex-col gap-2 p-5">
               <span className="landing-stat-number">97.8%</span>
               <span className="text-base text-muted-foreground">
@@ -225,10 +221,7 @@ export default function HomePage() {
               </span>
             </CardContent>
           </Card>
-          <Card
-            className="border-none shadow-none gap-0 py-0"
-            role="listitem"
-          >
+          <Card className="border-none shadow-none gap-0 py-0" role="listitem">
             <CardContent className="flex flex-col gap-2 p-5">
               <span className="landing-stat-number">100 ms</span>
               <span className="text-base text-muted-foreground">
@@ -237,10 +230,7 @@ export default function HomePage() {
               </span>
             </CardContent>
           </Card>
-          <Card
-            className="border-none shadow-none gap-0 py-0"
-            role="listitem"
-          >
+          <Card className="border-none shadow-none gap-0 py-0" role="listitem">
             <CardContent className="flex flex-col gap-2 p-5">
               <span className="landing-stat-number">4 classes</span>
               <span className="text-base text-muted-foreground">

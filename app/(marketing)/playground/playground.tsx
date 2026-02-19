@@ -27,14 +27,14 @@ type ModelSource = "cdn" | "bundled" | "none";
 type EventType = "speechStart" | "pause" | "turnEnd" | "interrupt";
 
 const modelSourceLabels: Record<ModelSource, string> = {
-  cdn: "V1 · CDN",
-  bundled: "V1 · Bundled",
+  cdn: "V2 · CDN",
+  bundled: "V2 · Bundled",
   none: "EnergyVAD",
 };
 
 const modelSourceDescriptions: Record<ModelSource, string> = {
-  cdn: "170 KB model loaded from CDN",
-  bundled: "170 KB model from npm package",
+  cdn: "2 MB model loaded from CDN",
+  bundled: "2 MB model from npm package",
   none: "Simple energy-based detection",
 };
 
@@ -277,7 +277,7 @@ export function Playground() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const detectorRef = useRef<import("@utterance/core").Utterance | null>(null);
+  const detectorRef = useRef<import("@/src/utterance").Utterance | null>(null);
   const idRef = useRef(0);
   const logEndRef = useRef<HTMLDivElement>(null);
 
@@ -315,7 +315,7 @@ export function Playground() {
     addEntry("system", `Loading ${modelLabel}\u2026`);
 
     try {
-      const { Utterance } = await import("@utterance/core");
+      const { Utterance } = await import("@/src/index");
 
       const modelPath = modelSource === "none" ? "disabled" : modelSource;
 

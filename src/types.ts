@@ -21,7 +21,7 @@ export interface UtteranceOptions {
 }
 
 export const MODEL_CDN_URL =
-  "https://pub-46a5feb0029246bcbc93fab6162cff94.r2.dev/v0.0.2/utterance-v1.onnx";
+  "https://pub-46a5feb0029246bcbc93fab6162cff94.r2.dev/v2/utterance-v2.onnx";
 
 export const DEFAULT_OPTIONS: Required<UtteranceOptions> = {
   sensitivity: 0.5,
