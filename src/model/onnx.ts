@@ -98,9 +98,13 @@ export class ONNXModel implements Model {
           return;
         }
       } else if (path === "bundled") {
-        // Try to resolve from the package's models/ directory
+        // Try to resolve the model relative to this module at runtime.
+        // Avoid `new URL("...", import.meta.url)` pattern which bundlers statically analyze.
         try {
-          const response = await fetch(new URL("../../models/utterance-v1.onnx", import.meta.url).href);
+          // eslint-disable-next-line @typescript-eslint/no-implied-eval
+          const getUrl = new Function("p", "b", "return new URL(p, b).href");
+          const href = getUrl("../../models/utterance-v1.onnx", import.meta.url) as string;
+          const response = await fetch(href);
           if (response.ok) {
             modelSource = await response.arrayBuffer();
           } else {
@@ -206,6 +210,33 @@ export class ONNXModel implements Model {
       const dstIdx = i * FEATURE_DIM;
       input.set(this.frameBuffer.subarray(srcIdx, srcIdx + FEATURE_DIM), dstIdx);
     }
+
+    // Normalize features to match Python training pipeline:
+    // Features 0-13 (MFCCs + energy): per-window zero-mean, unit-variance
+    for (let f = 0; f < 14; f++) {
+      let sum = 0;
+      for (let i = 0; i < CONTEXT_FRAMES; i++) {
+        sum += input[i * FEATURE_DIM + f];
+      }
+      const mean = sum / CONTEXT_FRAMES;
+
+      let varSum = 0;
+      for (let i = 0; i < CONTEXT_FRAMES; i++) {
+        const d = input[i * FEATURE_DIM + f] - mean;
+        varSum += d * d;
+      }
+      const std = Math.sqrt(varSum / CONTEXT_FRAMES) || 1;
+
+      for (let i = 0; i < CONTEXT_FRAMES; i++) {
+        input[i * FEATURE_DIM + f] = (input[i * FEATURE_DIM + f] - mean) / std;
+      }
+    }
+
+    // Feature 14 (pitch): scale Hz → [0, 1] by dividing by 500
+    for (let i = 0; i < CONTEXT_FRAMES; i++) {
+      input[i * FEATURE_DIM + 14] /= 500;
+    }
+    // Features 15-16 (speech rate, pause duration): already normalized in extractor
 
     // Create tensor and run
     const tensor = new ort.Tensor("float32", input, [1, CONTEXT_FRAMES, FEATURE_DIM]);

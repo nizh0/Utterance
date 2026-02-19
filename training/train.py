@@ -265,7 +265,10 @@ def main():
     # Loss with class weights
     class_weights = compute_class_weights(train_labels, num_classes).to(device)
     print(f"Class weights: {dict(zip(label_names, [f'{w:.3f}' for w in class_weights.cpu().numpy()]))}")
-    criterion = nn.CrossEntropyLoss(weight=class_weights)
+    label_smoothing = train_cfg.get("label_smoothing", 0.0)
+    criterion = nn.CrossEntropyLoss(weight=class_weights, label_smoothing=label_smoothing)
+    if label_smoothing > 0:
+        print(f"Label smoothing: {label_smoothing}")
 
     # Optimizer
     optimizer = torch.optim.AdamW(

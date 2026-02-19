@@ -1,0 +1,69 @@
+# Utterance Model Configuration — Hybrid Conv + Attention (v2)
+#
+# Larger model with better calibration.
+# Budget: <5MB ONNX (float32, no quantization).
+# Context window: 1 second (100 frames at 10ms hop).
+
+model:
+  architecture: hybrid_conv_attention
+  input_dim: 17            # 13 MFCCs + energy + pitch + speech_rate + pause_duration
+  context_frames: 100      # 1 second at 10ms hop
+  num_classes: 4            # speaking, thinking_pause, turn_complete, interrupt_intent
+
+  # 1D Convolution blocks — wider channels
+  conv:
+    channels: [64, 128, 128]
+    kernel_sizes: [5, 3, 3]
+    use_batchnorm: true
+    activation: relu
+    dropout: 0.15
+
+  # Two attention layers for better temporal context
+  attention:
+    hidden_dim: 128
+    num_heads: 8
+    num_layers: 2
+    dropout: 0.15
+
+  # Classification head
+  head:
+    pooling: global_average
+    dropout: 0.3
+
+training:
+  batch_size: 64
+  learning_rate: 0.0005
+  epochs: 80
+  optimizer: adamw
+  weight_decay: 0.02
+  scheduler: cosine
+  warmup_epochs: 5
+  early_stopping_patience: 10
+  class_weights: auto
+  label_smoothing: 0.1
+
+data:
+  dataset: switchboard
+  sample_rate: 16000
+  frame_length_ms: 25
+  frame_shift_ms: 10
+  num_mfcc: 13
+  context_window_ms: 1000
+  noise_augmentation_std: 0.015
+  train_split: 0.8
+  stratified: true
+
+inference:
+  batch_interval_ms: 100
+  execution_provider: wasm
+  quantization: none         # float32 — model is small enough
+
+labels:
+  - speaking
+  - thinking_pause
+  - turn_complete
+  - interrupt_intent
+
+evaluation:
+  target_accuracy: 0.85
+  test_set: hand_labeled

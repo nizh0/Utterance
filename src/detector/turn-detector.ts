@@ -18,6 +18,7 @@ export class TurnDetector {
   private state: "idle" | "speaking" | "paused" = "idle";
   private pauseStart = 0;
   private speakStart = 0;
+  private interruptFired = false;
 
   private readonly sensitivity: number;
   private readonly pauseTolerance: number;
@@ -59,6 +60,7 @@ export class TurnDetector {
 
     switch (label) {
       case "speaking":
+        this.interruptFired = false;
         if (this.state !== "speaking") {
           this.state = "speaking";
           this.speakStart = timestamp;
@@ -101,7 +103,8 @@ export class TurnDetector {
         break;
 
       case "interrupt_intent":
-        if (confidence >= threshold) {
+        if (confidence >= threshold && !this.interruptFired) {
+          this.interruptFired = true;
           this.emit("interrupt", { timestamp });
         }
         break;
@@ -115,6 +118,7 @@ export class TurnDetector {
     this.state = "idle";
     this.pauseStart = 0;
     this.speakStart = 0;
+    this.interruptFired = false;
   }
 
   private emit<E extends UtteranceEvent>(

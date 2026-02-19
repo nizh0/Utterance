@@ -78,6 +78,7 @@ class HybridEndpointModel(nn.Module):
         conv_kernel_sizes: list[int] | None = None,
         attention_dim: int = 64,
         num_heads: int = 4,
+        num_layers: int = 1,
         num_classes: int = 4,
         conv_dropout: float = 0.1,
         attention_dropout: float = 0.1,
@@ -115,7 +116,7 @@ class HybridEndpointModel(nn.Module):
             batch_first=True,
             activation="relu",
         )
-        self.attention = nn.TransformerEncoder(encoder_layer, num_layers=1)
+        self.attention = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
 
         # Classification head
         self.head = nn.Sequential(
@@ -181,6 +182,7 @@ def build_model_from_config(config: dict) -> HybridEndpointModel:
         conv_kernel_sizes=conv_cfg.get("kernel_sizes", [5, 3, 3]),
         attention_dim=attn_cfg.get("hidden_dim", 64),
         num_heads=attn_cfg.get("num_heads", 4),
+        num_layers=attn_cfg.get("num_layers", 1),
         num_classes=model_cfg["num_classes"],
         conv_dropout=conv_cfg.get("dropout", 0.1),
         attention_dropout=attn_cfg.get("dropout", 0.1),

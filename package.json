@@ -1,6 +1,6 @@
 {
   "name": "@utterance/core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Client-side semantic endpointing. Know when they're done talking.",
   "type": "module",
   "main": "dist/index.cjs",
@@ -56,6 +56,8 @@
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "@tailwindcss/postcss": "^4.2.0",
+    "@types/d3-scale": "^4.0.9",
+    "@types/d3-shape": "^3.1.8",
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.0.0",
     "@types/react": "^19.2.14",
@@ -79,6 +81,8 @@
     "@utterance/core": "^0.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "d3-scale": "^4.0.2",
+    "d3-shape": "^3.2.0",
     "fumadocs-core": "^16.6.3",
     "fumadocs-mdx": "^14.2.7",
     "fumadocs-ui": "^16.6.3",
